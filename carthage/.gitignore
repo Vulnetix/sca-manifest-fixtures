@@ -1,0 +1,22 @@
+# Carthage
+Carthage/Build/
+Carthage/Checkouts/
+
+# Xcode
+*.xcworkspace/
+!*.xcworkspace/contents.xcworkspacedata
+DerivedData/
+*.xcuserstate
+*.xccheckout
+*.moved-aside
+build/
+*.hmap
+*.ipa
+*.dSYM.zip
+*.dSYM
+
+# Swift
+.build/
+
+# Vulnetix
+.vulnetix/

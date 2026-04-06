@@ -1,0 +1,61 @@
+{
+    "_meta": {
+        "hash": {
+            "sha256": "a1b2c3d4e5f6a1b2c3d4e5f6a1b2c3d4e5f6a1b2c3d4e5f6a1b2c3d4e5f6a1b2"
+        },
+        "pipfile-spec": 6,
+        "requires": {
+            "python_version": "3.12"
+        },
+        "sources": [
+            {
+                "name": "pypi",
+                "url": "https://pypi.org/simple",
+                "verify_ssl": true
+            }
+        ]
+    },
+    "default": {
+        "certifi": {
+            "hashes": ["sha256:0f212c2744a96668204be29e0b9e5bc8a5c3d7e1c4d5e6f7a8b9c0d1e2f3a4b5"],
+            "version": "==2024.8.30"
+        },
+        "charset-normalizer": {
+            "hashes": ["sha256:1234567890abcdef1234567890abcdef1234567890abcdef1234567890abcdef12"],
+            "version": "==3.3.2"
+        },
+        "click": {
+            "hashes": ["sha256:11fd4163e2aaf0d5632c5a0e8d0e5e9d1f3a7b6c4a9e8d7f6a5b4c3d2e1f0a9b8"],
+            "version": "==8.1.7"
+        },
+        "httpx": {
+            "hashes": ["sha256:a1b2c3d4e5f6a1b2c3d4e5f6a1b2c3d4e5f6a1b2c3d4e5f6a1b2c3d4e5f6a1b2"],
+            "version": "==0.27.2"
+        },
+        "idna": {
+            "hashes": ["sha256:abcdef1234567890abcdef1234567890abcdef1234567890abcdef1234567890ab"],
+            "version": "==3.10"
+        },
+        "pydantic": {
+            "hashes": ["sha256:f1e2d3a4b5c6d7e8f9a0b1c2d3e4f5a6b7c8d9e0f1a2b3c4d5e6f7a8b9c0d1e2"],
+            "version": "==2.9.2"
+        },
+        "pydantic-core": {
+            "hashes": ["sha256:2a3b4c5d6e7f8a9b0c1d2e3f4a5b6c7d8e9f0a1b2c3d4e5f6a7b8c9d0e1f2a3b"],
+            "version": "==2.23.4"
+        },
+        "requests": {
+            "hashes": ["sha256:3d5e6f7b8a9c0d1e2f3a4b5c6d7e8f9a0b1c2d3e4f5a6b7c8d9e0f1a2b3c4d5e"],
+            "version": "==2.32.3"
+        },
+        "rich": {
+            "hashes": ["sha256:4f5a6b7c8d9e0f1a2b3c4d5e6f7a8b9c0d1e2f3a4b5c6d7e8f9a0b1c2d3e4f5a"],
+            "version": "==13.8.1"
+        },
+        "urllib3": {
+            "hashes": ["sha256:5a6b7c8d9e0f1a2b3c4d5e6f7a8b9c0d1e2f3a4b5c6d7e8f9a0b1c2d3e4f5a6b"],
+            "version": "==2.2.3"
+        }
+    },
+    "develop": {}
+}

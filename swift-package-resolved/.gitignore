@@ -1,0 +1,9 @@
+# Swift Package Manager
+.build/
+Packages/
+*.xcodeproj
+xcuserdata/
+DerivedData/
+
+# Vulnetix
+.vulnetix/

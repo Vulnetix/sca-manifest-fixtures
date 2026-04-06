@@ -1,0 +1,14 @@
+# Meson
+build/
+builddir/
+_build/
+
+# C++ build artifacts
+*.o
+*.a
+*.so
+*.out
+*.d
+
+# Vulnetix
+.vulnetix/

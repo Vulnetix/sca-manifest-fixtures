@@ -1,0 +1,26 @@
+.{
+    .name = "zig-test",
+    .version = "0.1.0",
+    .dependencies = .{
+        .ziglyph = .{
+            .url = "https://github.com/ziglibs/ziglyph/archive/refs/tags/v0.2.0.tar.gz",
+            .hash = "1220abc123def456789012345678901234567890123456789012345678901234",
+        },
+        .zld = .{
+            .url = "https://github.com/ziglibs/zld/archive/refs/tags/v0.2.0.tar.gz",
+            .hash = "1220def4567890123456789012345678901234567890123456789012345678",
+        },
+        .ziggy = .{
+            .url = "https://github.com/ziglibs/ziggy/archive/refs/tags/0.0.0.tar.gz",
+            .hash = "1220ghi789012345678901234567890123456789012345678901234567890123",
+        },
+        .bunfig = .{
+            .url = "https://github.com/ziglibs/bunfig/archive/refs/tags/0.0.0.tar.gz",
+            .hash = "1220jkl0123456789012345678901234567890123456789012345678901234567",
+        },
+        .zap = .{
+            .url = "https://github.com/ziglibs/zap/archive/refs/tags/0.3.0.tar.gz",
+            .hash = "1220mno3456789012345678901234567890123456789012345678901234567890",
+        },
+    },
+}

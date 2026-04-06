@@ -1,0 +1,12 @@
+# Scala / sbt
+target/
+project/target/
+project/project/
+.bsp/
+.metals/
+
+# IDE
+.idea/
+
+# Vulnetix
+.vulnetix/

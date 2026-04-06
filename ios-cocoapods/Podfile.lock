@@ -1,0 +1,32 @@
+PODS:
+  - Alamofire (5.9.1)
+  - SnapKit (5.7.1)
+  - Kingfisher (8.1.3)
+  - RxSwift (6.7.1)
+  - Lottie (4.5.0)
+
+DEPENDENCIES:
+  - Alamofire (~> 5.9)
+  - SnapKit (~> 5.7)
+  - Kingfisher (~> 8.1)
+  - RxSwift (~> 6.7)
+  - Lottie (~> 4.5)
+
+SPEC REPOS:
+  trunk:
+    - Alamofire
+    - SnapKit
+    - Kingfisher
+    - RxSwift
+    - Lottie
+
+SPEC CHECKSUMS:
+  Alamofire: abc123
+  SnapKit: def456
+  Kingfisher: ghi789
+  RxSwift: jkl012
+  Lottie: mno345
+
+PODFILE CHECKSUM: abcdef1234567890
+
+COCOAPODS: 1.15.2

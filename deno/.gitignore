@@ -1,0 +1,11 @@
+# Deno
+.deno/
+deno.lock
+
+# TypeScript / JavaScript
+node_modules/
+dist/
+*.js.map
+
+# Vulnetix
+.vulnetix/

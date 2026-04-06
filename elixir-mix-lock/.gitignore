@@ -1,0 +1,9 @@
+# Elixir / Mix
+_build/
+deps/
+.elixir_ls/
+*.ez
+erl_crash.dump
+
+# Vulnetix
+.vulnetix/

@@ -1,0 +1,5 @@
+github "Alamofire/Alamofire" ~> 5.9
+github "onevcat/Kingfisher" ~> 8.1
+github "SnapKit/SnapKit" ~> 5.7
+github "ReactiveX/RxSwift" ~> 6.7
+github "airbnb/lottie-ios" ~> 4.5

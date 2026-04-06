@@ -1,0 +1,42 @@
+{
+  "originHash": "abc123",
+  "pins": [
+    {
+      "identity": "Alamofire",
+      "kind": "remoteSourceControl",
+      "location": "https://github.com/Alamofire/Alamofire",
+      "state": {
+        "revision": "5.9.1",
+        "version": "5.9.1"
+      }
+    },
+    {
+      "identity": "Kingfisher",
+      "kind": "remoteSourceControl",
+      "location": "https://github.com/onevcat/Kingfisher",
+      "state": {
+        "revision": "8.1.3",
+        "version": "8.1.3"
+      }
+    },
+    {
+      "identity": "SnapKit",
+      "kind": "remoteSourceControl",
+      "location": "https://github.com/SnapKit/SnapKit",
+      "state": {
+        "revision": "5.7.1",
+        "version": "5.7.1"
+      }
+    },
+    {
+      "identity": "SwiftyJSON",
+      "kind": "remoteSourceControl",
+      "location": "https://github.com/SwiftyJSON/SwiftyJSON",
+      "state": {
+        "revision": "5.0.2",
+        "version": "5.0.2"
+      }
+    }
+  ],
+  "version": 2
+}

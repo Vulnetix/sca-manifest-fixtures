@@ -1,0 +1,17 @@
+plugins {
+    java
+    application
+}
+repositories {
+    mavenCentral()
+}
+dependencies {
+    implementation("com.google.guava:guava:33.3.1-jre")
+    implementation("org.slf4j:slf4j-api:2.0.16")
+    implementation("com.squareup.okhttp3:okhttp:4.12.0")
+    implementation("com.google.code.gson:gson:2.11.0")
+    implementation("org.apache.commons:commons-lang3:3.17.0")
+}
+application {
+    mainClass.set("com.test.Main")
+}

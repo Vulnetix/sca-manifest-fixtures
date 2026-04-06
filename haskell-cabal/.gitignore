@@ -1,0 +1,12 @@
+# Haskell / Cabal
+dist-newstyle/
+dist/
+.cabal-sandbox/
+cabal.sandbox.config
+*.hp
+*.prof
+*.chi
+*.chs.h
+
+# Vulnetix
+.vulnetix/

@@ -1,0 +1,5 @@
+Newtonsoft.Json
+FSharp.Core
+Npgsql
+Suave
+FsPickler

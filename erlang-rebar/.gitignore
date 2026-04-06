@@ -1,0 +1,10 @@
+# Erlang / Rebar3
+_build/
+deps/
+.rebar3/
+ebin/
+*.beam
+erl_crash.dump
+
+# Vulnetix
+.vulnetix/

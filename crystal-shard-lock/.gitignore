@@ -1,0 +1,10 @@
+# Crystal / Shards
+lib/
+.shards/
+bin/
+
+# Crystal build artifacts
+*.dwarf
+
+# Vulnetix
+.vulnetix/

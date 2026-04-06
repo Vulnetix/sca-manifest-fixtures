@@ -1,0 +1,77 @@
+{
+  "nodes": {
+    "devshell": {
+      "inputs": { "nixpkgs": "nixpkgs" },
+      "locked": {
+        "lastModified": 1735644391,
+        "narHash": "sha256-abc123",
+        "owner": "numtide",
+        "repo": "devshell",
+        "rev": "abc123",
+        "type": "github"
+      },
+      "original": { "owner": "numtide", "repo": "devshell", "type": "github" }
+    },
+    "flake-utils": {
+      "inputs": {},
+      "locked": {
+        "lastModified": 1731533236,
+        "narHash": "sha256-def456",
+        "owner": "numtide",
+        "repo": "flake-utils",
+        "rev": "def456",
+        "type": "github"
+      },
+      "original": { "owner": "numtide", "repo": "flake-utils", "type": "github" }
+    },
+    "nixpkgs": {
+      "locked": {
+        "lastModified": 1743032193,
+        "narHash": "sha256-ghi789",
+        "owner": "NixOS",
+        "repo": "nixpkgs",
+        "rev": "ghi789",
+        "type": "github"
+      },
+      "original": { "owner": "NixOS", "repo": "nixpkgs", "ref": "nixos-unstable", "type": "github" }
+    },
+    "pre-commit-hooks": {
+      "inputs": {
+        "nixpkgs": "nixpkgs",
+        "flake-utils": "flake-utils"
+      },
+      "locked": {
+        "lastModified": 1742838936,
+        "narHash": "sha256-jkl012",
+        "owner": "cachix",
+        "repo": "pre-commit-hooks.nix",
+        "rev": "jkl012",
+        "type": "github"
+      },
+      "original": { "owner": "cachix", "repo": "pre-commit-hooks.nix", "type": "github" }
+    },
+    "root": {
+      "inputs": {
+        "devshell": "devshell",
+        "flake-utils": "flake-utils",
+        "nixpkgs": "nixpkgs",
+        "pre-commit-hooks": "pre-commit-hooks",
+        "treefmt-nix": "nixpkgs"
+      }
+    },
+    "treefmt-nix": {
+      "inputs": { "nixpkgs": "nixpkgs" },
+      "locked": {
+        "lastModified": 1743024311,
+        "narHash": "sha256-mno345",
+        "owner": "numtide",
+        "repo": "treefmt-nix",
+        "rev": "mno345",
+        "type": "github"
+      },
+      "original": { "owner": "numtide", "repo": "treefmt-nix", "type": "github" }
+    }
+  },
+  "root": "root",
+  "version": 7
+}

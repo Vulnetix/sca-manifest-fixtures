@@ -1,0 +1,11 @@
+{
+  "name": "cpp-vcpkg",
+  "version": "0.1.0",
+  "dependencies": [
+    { "name": "nlohmann-json", "version>=": "3.11.3" },
+    { "name": "fmt", "version>=": "11.0.2" },
+    { "name": "spdlog", "version>=": "1.14.1" },
+    { "name": "cxxopts", "version>=": "3.2.1" },
+    { "name": "catch2", "version>=": "3.7.1" }
+  ]
+}

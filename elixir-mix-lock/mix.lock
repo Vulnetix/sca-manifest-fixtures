@@ -1,0 +1,16 @@
+%{
+  "cowboy": {:hex, :cowboy, "2.12.0", "abc123"},
+  "cowlib": {:hex, :cowlib, "2.13.0", "def456"},
+  "ex_doc": {:hex, :ex_doc, "0.34.2", "ghi789"},
+  "floki": {:hex, :floki, "0.36.3", "jkl012"},
+  "hackney": {:hex, :hackney, "1.20.1", "mno345"},
+  "httpoison": {:hex, :httpoison, "2.2.1", "pqr678"},
+  "idna": {:hex, :idna, "7.0.0", "stu901"},
+  "mime": {:hex, :mime, "2.0.6", "vwx234"},
+  "plug": {:hex, :plug, "1.16.1", "yza567"},
+  "plug_cowboy": {:hex, :plug_cowboy, "2.7.0", "bcd890"},
+  "plug_crypto": {:hex, :plug_crypto, "2.1.0", "efg123"},
+  "poison": {:hex, :poison, "6.0.0", "hij456"},
+  "ranch": {:hex, :ranch, "1.8.0", "klm789"},
+  "telemetry": {:hex, :telemetry, "1.2.1", "nop012"}
+}

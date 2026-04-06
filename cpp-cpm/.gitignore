@@ -1,0 +1,19 @@
+# CMake / CPM
+build/
+_deps/
+CMakeCache.txt
+CMakeFiles/
+cmake_install.cmake
+Makefile
+*.cmake
+!CMakeLists.txt
+
+# C++ build artifacts
+*.o
+*.a
+*.so
+*.out
+*.d
+
+# Vulnetix
+.vulnetix/

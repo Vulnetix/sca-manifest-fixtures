@@ -1,0 +1,8 @@
+{application, myapp, [
+    {description, "Test project for erlang-rebar"},
+    {vsn, "0.1.0"},
+    {registered, []},
+    {applications, [kernel, stdlib, cowboy, jsx, lager, gun, erlcloud]},
+    {modules, []},
+    {env, []}
+]}.

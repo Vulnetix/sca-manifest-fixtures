@@ -1,0 +1,7 @@
+# SBT dependency lock file
+akka-actor-typed:2.9.3
+circe-core:0.14.10
+circe-generic:0.14.10
+doobie-core:1.0.0-RC5
+http4s-dsl:1.0.0-M41
+logback-classic:1.5.8

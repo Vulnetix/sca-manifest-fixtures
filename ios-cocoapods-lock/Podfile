@@ -1,0 +1,10 @@
+platform :ios, '17.0'
+use_frameworks!
+
+target 'PodTest' do
+  pod 'Alamofire', '~> 5.9'
+  pod 'SnapKit', '~> 5.7'
+  pod 'Kingfisher', '~> 8.1'
+  pod 'RxSwift', '~> 6.7'
+  pod 'Lottie', '~> 4.5'
+end

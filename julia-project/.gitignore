@@ -1,0 +1,9 @@
+# Julia
+*.jl.cov
+*.jl.mem
+docs/build/
+.julia/
+Manifest.toml
+
+# Vulnetix
+.vulnetix/

@@ -1,0 +1,12 @@
+{
+  "version": "0.5",
+  "requires": [
+    "boost/1.86.0#abc123",
+    "fmt/11.0.2#def456",
+    "spdlog/1.14.1#ghi789",
+    "openssl/3.3.2#jkl012",
+    "catch2/3.7.1#mno345"
+  ],
+  "build_requires": [],
+  "python_requires": []
+}

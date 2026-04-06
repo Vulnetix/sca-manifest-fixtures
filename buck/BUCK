@@ -1,0 +1,42 @@
+prebuilt_jar(
+    name = "guava",
+    binary_jar = "lib/guava-33.3.1-jre.jar",
+)
+
+prebuilt_jar(
+    name = "jackson-databind",
+    binary_jar = "lib/jackson-databind-2.18.0.jar",
+)
+
+prebuilt_jar(
+    name = "slf4j-api",
+    binary_jar = "lib/slf4j-api-2.0.16.jar",
+)
+
+prebuilt_jar(
+    name = "okhttp",
+    binary_jar = "lib/okhttp-4.12.0.jar",
+)
+
+prebuilt_jar(
+    name = "gson",
+    binary_jar = "lib/gson-2.11.0.jar",
+)
+
+java_library(
+    name = "mylib",
+    srcs = glob(["src/main/java/**/*.java"]),
+    deps = [
+        ":guava",
+        ":jackson-databind",
+        ":slf4j-api",
+        ":okhttp",
+        ":gson",
+    ],
+)
+
+java_binary(
+    name = "main",
+    main_class = "com.test.Main",
+    runtime_deps = [":mylib"],
+)

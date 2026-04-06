@@ -1,0 +1,18 @@
+# CocoaPods
+Pods/
+
+# Xcode
+*.xcworkspace/
+!*.xcworkspace/contents.xcworkspacedata
+DerivedData/
+*.xcuserstate
+*.xccheckout
+*.moved-aside
+build/
+*.hmap
+*.ipa
+*.dSYM.zip
+*.dSYM
+
+# Vulnetix
+.vulnetix/

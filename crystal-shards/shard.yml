@@ -1,0 +1,23 @@
+name: crystal-shards
+version: 0.1.0
+crystal: ">= 1.13.0"
+
+dependencies:
+  kemal:
+    github: kemalcr/kemal
+    version: "~> 1.4.0"
+  db:
+    github: crystal-lang/crystal-db
+    version: "~> 0.13.0"
+  sqlite3:
+    github: crystal-lang/crystal-sqlite3
+    version: "~> 1.6.0"
+  jbuilder:
+    github: crystal-lang/crystal-jbuilder
+    version: "~> 1.1.0"
+  cry:
+    github: elbywan/cry
+    version: "~> 1.2.0"
+
+authors:
+  - test

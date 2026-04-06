@@ -1,0 +1,17 @@
+# .NET
+bin/
+obj/
+*.user
+*.suo
+.vs/
+*.nupkg
+TestResults/
+
+# Paket
+packages/
+paket-files/
+.paket/bootstrapper
+.paket/paket.exe
+
+# Vulnetix
+.vulnetix/

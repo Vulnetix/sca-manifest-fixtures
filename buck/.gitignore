@@ -1,0 +1,15 @@
+# Buck
+buck-out/
+.buckd/
+.buck/
+.buckversion
+
+# Java
+*.class
+*.jar
+*.war
+*.ear
+target/
+
+# Vulnetix
+.vulnetix/
