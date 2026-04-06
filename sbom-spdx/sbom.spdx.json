@@ -1,0 +1,80 @@
+{
+  "spdxVersion": "SPDX-2.3",
+  "dataLicense": "CC0-1.0",
+  "SPDXID": "SPDXRef-DOCUMENT",
+  "name": "myapp-sbom",
+  "documentNamespace": "https://example.com/myapp-sbom",
+  "creationInfo": {
+    "created": "2024-01-01T00:00:00Z",
+    "creators": [
+      "Tool: example-sbom-generator"
+    ]
+  },
+  "packages": [
+    {
+      "SPDXID": "SPDXRef-Package-requests",
+      "name": "requests",
+      "versionInfo": "2.32.3",
+      "downloadLocation": "https://pypi.org/project/requests/2.32.3/",
+      "externalRefs": [
+        {
+          "referenceCategory": "PACKAGE-MANAGER",
+          "referenceType": "purl",
+          "referenceLocator": "pkg:pypi/requests@2.32.3"
+        }
+      ]
+    },
+    {
+      "SPDXID": "SPDXRef-Package-click",
+      "name": "click",
+      "versionInfo": "8.1.7",
+      "downloadLocation": "https://pypi.org/project/click/8.1.7/",
+      "externalRefs": [
+        {
+          "referenceCategory": "PACKAGE-MANAGER",
+          "referenceType": "purl",
+          "referenceLocator": "pkg:pypi/click@8.1.7"
+        }
+      ]
+    },
+    {
+      "SPDXID": "SPDXRef-Package-httpx",
+      "name": "httpx",
+      "versionInfo": "0.27.0",
+      "downloadLocation": "https://pypi.org/project/httpx/0.27.0/",
+      "externalRefs": [
+        {
+          "referenceCategory": "PACKAGE-MANAGER",
+          "referenceType": "purl",
+          "referenceLocator": "pkg:pypi/httpx@0.27.0"
+        }
+      ]
+    },
+    {
+      "SPDXID": "SPDXRef-Package-pydantic",
+      "name": "pydantic",
+      "versionInfo": "2.7.4",
+      "downloadLocation": "https://pypi.org/project/pydantic/2.7.4/",
+      "externalRefs": [
+        {
+          "referenceCategory": "PACKAGE-MANAGER",
+          "referenceType": "purl",
+          "referenceLocator": "pkg:pypi/pydantic@2.7.4"
+        }
+      ]
+    },
+    {
+      "SPDXID": "SPDXRef-Package-rich",
+      "name": "rich",
+      "versionInfo": "13.7.1",
+      "downloadLocation": "https://pypi.org/project/rich/13.7.1/",
+      "externalRefs": [
+        {
+          "referenceCategory": "PACKAGE-MANAGER",
+          "referenceType": "purl",
+          "referenceLocator": "pkg:pypi/rich@13.7.1"
+        }
+      ]
+    }
+  ]
+}

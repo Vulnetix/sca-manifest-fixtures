@@ -1,0 +1,10 @@
+github.com/gin-gonic/gin v1.10.0 h1:nTuyha1TYqgedzytsKYqna+DfLos46nTv2ygFy86HFU=
+github.com/gin-gonic/gin v1.10.0/go.mod h1:4PMNQiOhvDRa013RKVbsiNwoyezlm2rm0uX/T7kzp5Y=
+github.com/spf13/cobra v1.8.1 h1:e5/vxKd/rZsfSJMUX1agtjeTDf+qv1/JdBF8lex5Gk4=
+github.com/spf13/cobra v1.8.1/go.mod h1:FzZos2s/3WRGRM2gfcUMkbXSMBaj2rlMJIi0PYqxJnA=
+github.com/sirupsen/logrus v1.9.3 h1:dueUQJ1C2q9oE3F7wvzdngrFjsYGX3bn3BaIjbTQHOE=
+github.com/sirupsen/logrus v1.9.3/go.mod h1:naHLuLoDiP4jHNo9R0BALnOWX2he09FhDhl1Fv4CUCo=
+github.com/stretchr/testify v1.9.0 h1:HtqpIVDClZ4nwg75+f6Lvsy/wHu+3BoSGCbBAcpTtIs=
+github.com/stretchr/testify v1.9.0/go.mod h1:r2ic/lqez/lEtzL7wO/rwa5dbSLXVDPFyf8C91i36aY=
+github.com/go-resty/resty/v2 v2.14.0 h1:G7+pga/bYCMfVLBpMV6VjWJMbNuFYE5o2DO8wXTDeYA=
+github.com/go-resty/resty/v2 v2.14.0/go.mod h1:IFAxEU0CPv7d/hOmSqYzmiEBLFmDGJXCqe8sNaNYa50=

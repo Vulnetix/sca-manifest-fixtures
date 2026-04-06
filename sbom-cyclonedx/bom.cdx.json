@@ -1,0 +1,44 @@
+{
+  "bomFormat": "CycloneDX",
+  "specVersion": "1.6",
+  "version": 1,
+  "metadata": {
+    "component": {
+      "type": "application",
+      "name": "myapp",
+      "version": "0.1.0"
+    }
+  },
+  "components": [
+    {
+      "type": "library",
+      "name": "requests",
+      "version": "2.32.3",
+      "purl": "pkg:pypi/requests@2.32.3"
+    },
+    {
+      "type": "library",
+      "name": "click",
+      "version": "8.1.7",
+      "purl": "pkg:pypi/click@8.1.7"
+    },
+    {
+      "type": "library",
+      "name": "httpx",
+      "version": "0.27.0",
+      "purl": "pkg:pypi/httpx@0.27.0"
+    },
+    {
+      "type": "library",
+      "name": "pydantic",
+      "version": "2.7.4",
+      "purl": "pkg:pypi/pydantic@2.7.4"
+    },
+    {
+      "type": "library",
+      "name": "rich",
+      "version": "13.7.1",
+      "purl": "pkg:pypi/rich@13.7.1"
+    }
+  ]
+}

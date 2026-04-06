@@ -5,16 +5,18 @@ passed=0
 detected_unsup=0
 failed=0
 
+SCRIPT_DIR="$(cd "$(dirname "$0")" && pwd)"
+
 echo "=== Vulnetix Manifest Detection Report ==="
 echo ""
 
-for dir in /home/chris/GitHub/test-repos/*/; do
+for dir in "$SCRIPT_DIR"/../*/; do
     name=$(basename "$dir")
 
     # Skip the scripts directory
     if [ "$name" = "scripts" ]; then continue; fi
 
-    output=$(vulnetix scan --depth 1 --path "$dir" --no-remediation --no-exploits 2>&1)
+    output=$(vulnetix scan --depth 3 --path "$dir" --no-remediation --no-exploits 2>&1)
 
     if echo "$output" | grep -q "Analysing"; then
         pkgs=$(echo "$output" | grep -oP '\d+ packages' | head -1)
@@ -37,4 +39,4 @@ printf "  Detected but unsupported: %d\n" "$detected_unsup"
 printf "  Not detected:             %d\n" "$failed"
 printf "  Total repos:              %d\n" $((passed + detected_unsup + failed))
 
-[ "$failed" -gt 0 ] && exit 1
+if [ "$failed" -gt 0 ]; then exit 1; fi

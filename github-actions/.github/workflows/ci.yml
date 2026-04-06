@@ -1,0 +1,35 @@
+name: CI
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+    branches: [main]
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: "22"
+
+      - uses: actions/cache@v4
+        with:
+          path: ~/.npm
+          key: ${{ runner.os }}-node-${{ hashFiles('**/package-lock.json') }}
+
+      - run: npm ci
+      - run: npm test
+      - run: npm run build
+
+      - uses: actions/upload-artifact@v4
+        with:
+          name: build-output
+          path: dist/
+
+      - uses: github/codeql-action/analyze@v3
+        with:
+          languages: javascript

@@ -1,0 +1,12 @@
+# Haskell
+.stack-work/
+dist-newstyle/
+*.hi
+*.o
+*.dyn_hi
+*.dyn_o
+*.cabal
+stack.yaml.lock
+
+# Vulnetix
+.vulnetix/

@@ -24,7 +24,7 @@ printf "${BOLD}=== Scanning: %s (expected direct deps: %d) ===${NC}\n" "$REPO" "
 echo ""
 
 # Run vulnetix - may exit non-zero on vulnerabilities, so always capture
-output=$(vulnetix scan --depth 1 --path "$dir" --no-remediation --no-exploits 2>&1) || true
+output=$(vulnetix scan --depth 3 --path "$dir" --no-remediation --no-exploits 2>&1) || true
 
 # Check manifest detected
 if ! echo "$output" | grep -q "Analysing"; then

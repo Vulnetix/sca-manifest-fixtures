@@ -1,0 +1,13 @@
+# OCaml
+_build/
+*.install
+*.byte
+*.native
+*.merlin
+.ocamlinit
+
+# Dune
+_opam/
+
+# Vulnetix
+.vulnetix/

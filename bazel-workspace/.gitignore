@@ -1,0 +1,6 @@
+# Bazel
+bazel-*/
+.bazelrc.user
+
+# Vulnetix
+.vulnetix/

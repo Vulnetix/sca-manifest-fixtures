@@ -1,0 +1,6 @@
+# Buck2
+buck-out/
+.buckd/
+
+# Vulnetix
+.vulnetix/

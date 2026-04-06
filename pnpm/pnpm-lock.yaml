@@ -1,0 +1,43 @@
+lockfileVersion: '9.0'
+
+settings:
+  autoInstallPeers: true
+  excludeLinksFromLockfile: false
+
+importers:
+  .:
+    dependencies:
+      express:
+        specifier: ^4.21.0
+        version: 4.21.0
+      lodash:
+        specifier: ^4.17.21
+        version: 4.17.21
+      axios:
+        specifier: ^1.7.7
+        version: 1.7.7
+      dotenv:
+        specifier: ^16.4.5
+        version: 16.4.5
+      chalk:
+        specifier: ^5.3.0
+        version: 5.3.0
+
+packages:
+  express@4.21.0:
+    resolution: {integrity: sha512-VqcNGcj/Id5ZT1LZ/cfihi3ttTn+NJmkli2eZADigjq29qTlWi/hAQ43t/VLPq8+UZ0UuLEiAGE6bPMAlSSig==}
+    engines: {node: '>= 0.10.0'}
+
+  lodash@4.17.21:
+    resolution: {integrity: sha512-v2kDEe57lecTulaDIuNTPy3Ry4gLGJ6Z1O3vE1krgXZNrsQ+LFTGHVxVjcXPs17LhbZVGedAJv8XZ1tvj5cvA==}
+
+  axios@1.7.7:
+    resolution: {integrity: sha512-S4kL7XtjgNmna6fgsRDg/BGPwC2CR7nHWfcNfXPisGFh9v9vm1BgJK9ayl5JVVq2Dp7EVFiTsB+VoZ150WRKA==}
+
+  dotenv@16.4.5:
+    resolution: {integrity: sha512-ZmdL2aui+eN/ftocBGW3G2HQk/3WZJ7iV1qlB2cCAhdR0V+ablGHHBI4vj2Gj6HJYRg6oesTMonFd5fn1LGzQ==}
+    engines: {node: '>=12'}
+
+  chalk@5.3.0:
+    resolution: {integrity: sha512-dLitG79d+GV1Nb/VYcCDFivJeK1hiukt9QjRNVOsUtTy1rR1YJsmpGGTZ3qJos+uw7WmWF4wUwBd9jxjocFC2w==}
+    engines: {node: ^12.17.0 || ^14.13 || >=16.0.0}

@@ -1,0 +1,15 @@
+Package: rtest
+Title: Test Project for R Dependencies
+Version: 0.1.0
+Authors@R: person("test", "user", email = "test@example.com", role = c("aut", "cre"))
+Description: A minimal R package to test dependency manifests.
+License: MIT + file LICENSE
+Encoding: UTF-8
+Roxygen: list(markdown = TRUE)
+RoxygenNote: 7.3.2
+Imports:
+    dplyr (>= 1.1.4),
+    ggplot2 (>= 3.5.1),
+    httr2 (>= 1.0.4),
+    readr (>= 2.1.5),
+    purrr (>= 1.0.2)

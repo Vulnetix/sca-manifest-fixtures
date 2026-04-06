@@ -1,0 +1,16 @@
+{
+    "name": "test/composer-lock-test",
+    "description": "Test project for composer.lock",
+    "type": "project",
+    "require": {
+        "php": ">=8.2",
+        "monolog/monolog": "^3.7",
+        "guzzlehttp/guzzle": "^7.9",
+        "symfony/console": "^7.1",
+        "vlucas/phpdotenv": "^5.6",
+        "nesbot/carbon": "^3.8"
+    },
+    "autoload": {
+        "psr-4": { "App\\": "src/" }
+    }
+}

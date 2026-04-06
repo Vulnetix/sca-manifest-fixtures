@@ -1,0 +1,10 @@
+[project]
+name = "pyproject-test"
+version = "0.1.0"
+dependencies = [
+    "requests>=2.32",
+    "click>=8.1",
+    "httpx>=0.27",
+    "pydantic>=2.9",
+    "rich>=13.8",
+]

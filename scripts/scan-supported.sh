@@ -33,7 +33,7 @@ for repo in "${SUPPORTED_REPOS[@]}"; do
     dir="$SCRIPT_DIR/../$repo"
     expected=${EXPECTED[$repo]:-5}
 
-    output=$(vulnetix scan --depth 1 --path "$dir" --no-remediation --no-exploits 2>&1) || true
+    output=$(vulnetix scan --depth 3 --path "$dir" --no-remediation --no-exploits 2>&1) || true
 
     if ! echo "$output" | grep -q "Analysing"; then
         printf "%-35s %8d %8s ${RED}%s${NC}\n" "$repo" "$expected" "—" "NOT DETECTED"

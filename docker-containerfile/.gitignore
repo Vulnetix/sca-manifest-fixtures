@@ -1,0 +1,14 @@
+# Docker
+.dockerignore
+docker-compose.override.yml
+*.tar
+*.tar.gz
+
+# Build context
+node_modules/
+dist/
+.env
+.env.*
+
+# Vulnetix
+.vulnetix/

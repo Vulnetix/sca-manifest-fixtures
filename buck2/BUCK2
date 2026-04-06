@@ -1,0 +1,11 @@
+cxx_binary(
+    name = "main",
+    srcs = ["src/main.cpp"],
+    deps = [
+        "//third-party:abseil",
+        "//third-party:fmt",
+        "//third-party:glog",
+        "//third-party:folly",
+        "//third-party:boost",
+    ],
+)

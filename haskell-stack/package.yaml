@@ -1,0 +1,14 @@
+name: myapp
+version: 0.1.0
+synopsis: A sample Haskell application
+
+executables:
+  myapp:
+    main: Main.hs
+    source-dirs: app
+    dependencies:
+      - base >= 4.7
+      - text
+      - aeson
+      - http-client
+      - optparse-applicative
