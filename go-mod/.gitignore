@@ -1,6 +1,2 @@
-# Go
-bin/
-vendor/
-
-# Vulnetix
-.vulnetix/
+.netrc
+.env.proxy

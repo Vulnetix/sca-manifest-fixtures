@@ -1,1 +1,8 @@
-\nCLAUDE.md
+CLAUDE.md
+
+# Vulnetix scan artefacts, never committed
+.vulnetix/
+
+# Credential files the fixtures document but must never carry
+.netrc
+.env.proxy

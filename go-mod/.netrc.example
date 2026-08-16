@@ -1,0 +1,3 @@
+machine packages.vulnetix.com
+    login <VdbOrganization.uuid>
+    password <hmac-sha256-hex>
