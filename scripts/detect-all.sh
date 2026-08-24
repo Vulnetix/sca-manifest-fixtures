@@ -16,7 +16,7 @@ for dir in "$SCRIPT_DIR"/../*/; do
 
     output=$(vulnetix scan --depth 3 --path "$dir" --no-remediation --no-exploits 2>&1)
 
-    if echo "$output" | grep -q "Analysing"; then
+    if echo "$output" | grep -qE "Parsing [0-9]+ detected file"; then
         printf "  %-35s OK\n" "$name"
         passed=$((passed + 1))
     elif echo "$output" | grep -q "Detected files"; then

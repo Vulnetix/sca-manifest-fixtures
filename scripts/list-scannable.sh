@@ -9,7 +9,7 @@ for dir in "$SCRIPT_DIR"/../*/; do
 
     output=$(vulnetix scan --depth 3 --path "$dir" --no-remediation --no-exploits 2>&1)
 
-    if echo "$output" | grep -q "Analysing"; then
+    if echo "$output" | grep -qE "Parsing [0-9]+ detected file"; then
         manifest=$(echo "$output" | grep -oP '\./\S+' | head -1)
         echo "$name -> $manifest"
     fi

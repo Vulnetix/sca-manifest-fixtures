@@ -17,7 +17,7 @@ YELLOW='\033[33m'
 BOLD='\033[1m'
 NC='\033[0m'
 
-# Repo directories that vulnetix actually supports (reached "Analysing" phase)
+# Repo directories that vulnetix actually supports (reached the manifest-parsing phase)
 SUPPORTED_REPOS=(
     python-requirements
     python-pipenv-lock
@@ -35,7 +35,7 @@ for repo in "${SUPPORTED_REPOS[@]}"; do
 
     output=$(vulnetix scan --depth 3 --path "$dir" --no-remediation --no-exploits 2>&1) || true
 
-    if ! echo "$output" | grep -q "Analysing"; then
+    if ! echo "$output" | grep -qE "Parsing [0-9]+ detected file"; then
         printf "%-35s %8d %8s ${RED}%s${NC}\n" "$repo" "$expected" "—" "NOT DETECTED"
         FAIL=$((FAIL + 1))
         continue

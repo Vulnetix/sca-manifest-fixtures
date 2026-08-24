@@ -27,7 +27,7 @@ echo ""
 output=$(vulnetix scan --depth 3 --path "$dir" --no-remediation --no-exploits 2>&1) || true
 
 # Check manifest detected
-if ! echo "$output" | grep -q "Analysing"; then
+if ! echo "$output" | grep -qE "Parsing [0-9]+ detected file"; then
     echo "  ${RED}FAIL: Manifest not detected${NC}"
     exit 1
 fi
