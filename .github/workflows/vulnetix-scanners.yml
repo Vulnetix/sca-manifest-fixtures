@@ -419,8 +419,24 @@ jobs:
     timeout-minutes: 30
     steps:
       - uses: actions/checkout@v5
+      - name: Detect PHP setup capability
+        id: php-setup
+        shell: bash --noprofile --norc {0}
+        run: |
+          # shivammathur/setup-php shells out to sudo. The runner pools grant one
+          # narrow sudo rule, so on those runners the action blocks forever on a
+          # password prompt and the job dies at its timeout-minutes cap having done
+          # nothing. Only run it where sudo is non-interactive.
+          if sudo -n true >/dev/null 2>&1; then
+            echo 'run=true' >>"$GITHUB_OUTPUT"
+          else
+            echo 'run=false' >>"$GITHUB_OUTPUT"
+            echo '::notice::passwordless sudo is unavailable on this runner; using the PHP already installed'
+          fi
       - name: Set up PHP
+        if: steps.php-setup.outputs.run == 'true'
         continue-on-error: true
+        timeout-minutes: 5
         uses: shivammathur/setup-php@v2
         with:
           php-version: 8.2
@@ -1430,8 +1446,24 @@ jobs:
     timeout-minutes: 30
     steps:
       - uses: actions/checkout@v5
+      - name: Detect PHP setup capability
+        id: php-setup
+        shell: bash --noprofile --norc {0}
+        run: |
+          # shivammathur/setup-php shells out to sudo. The runner pools grant one
+          # narrow sudo rule, so on those runners the action blocks forever on a
+          # password prompt and the job dies at its timeout-minutes cap having done
+          # nothing. Only run it where sudo is non-interactive.
+          if sudo -n true >/dev/null 2>&1; then
+            echo 'run=true' >>"$GITHUB_OUTPUT"
+          else
+            echo 'run=false' >>"$GITHUB_OUTPUT"
+            echo '::notice::passwordless sudo is unavailable on this runner; using the PHP already installed'
+          fi
       - name: Set up PHP
+        if: steps.php-setup.outputs.run == 'true'
         continue-on-error: true
+        timeout-minutes: 5
         uses: shivammathur/setup-php@v2
         with:
           coverage: none
