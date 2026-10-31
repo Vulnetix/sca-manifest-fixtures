@@ -49,6 +49,12 @@ for dir in "$SCRIPT_DIR"/../*/; do
     # specifically to exercise the unresolved case (npm, php-composer,
     # python-pyproject, python-requirements-in, dart-pub, elixir-mix). Counting
     # them as failures buried the real regressions.
+    # A workspace fixture is the exception: its members rely on the root's lock.
+    if is_workspace_repo "$name" && echo "$output" | grep -qE "has no lockfile|member of the workspace"; then
+        printf "%-35s %8d %8s ${RED}%s${NC}\n" "$name" "$expected" "—" "WORKSPACE MEMBER UNRESOLVED"
+        FAIL=$((FAIL + 1))
+        continue
+    fi
     if echo "$output" | grep -qE "has no (lock|[a-zA-Z.]+\.lock|lockfile)"; then
         printf "%-35s %8d %8s ${YELLOW}%s${NC}\n" "$name" "$expected" "—" "LOCKFILE REQUIRED (expected)"
         SKIPPED=$((SKIPPED + 1))
@@ -56,7 +62,7 @@ for dir in "$SCRIPT_DIR"/../*/; do
     fi
 
     # Extract scanned package count: "N packages"
-    scanned=$(echo "$output" | grep -oP '\d+ packages' | head -1 | grep -oP '^\d+')
+    scanned=$(echo "$output" | scanned_count)
     scanned=${scanned:-0}
 
     # Validate direct deps match

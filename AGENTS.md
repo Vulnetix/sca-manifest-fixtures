@@ -53,6 +53,12 @@ test-repos/
 ├── ios-cocoapods-lock/       # Podfile + Podfile.lock (lock-focused)
 ├── dart-pub/                 # pubspec.yaml
 ├── deno/                     # deno.json
+├── npm/                      # package.json (no lock)
+├── npm-lock/                 # package.json + package-lock.json
+├── yarn/                     # package.json + yarn.lock
+├── pnpm/                     # package.json + pnpm-lock.yaml
+├── bun/                      # package.json + bun.lock
+├── {npm,yarn,pnpm,bun}-workspace/  # monorepo, one lockfile at the root only
 ├── haskell-cabal/            # .cabal
 ├── haskell-cabal-freeze/     # .cabal + cabal.project.freeze
 ├── crystal-shards/           # shard.yml
@@ -116,6 +122,7 @@ A repo is considered **passing** when the CLI output:
 2. Add a minimal project with **exactly 5 direct dependencies** (or another agreed count).
 3. Add the expected direct-dep count to `scripts/expected-counts.sh`.
 4. Run `just scan-repo <new-repo>` to confirm it passes before committing.
+5. A JavaScript monorepo fixture is named `<pm>-workspace`; the scripts then fail it on a "has no lockfile" note instead of skipping it (see "JavaScript workspaces" in the README).
 
 ---
 

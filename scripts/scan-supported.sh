@@ -23,6 +23,14 @@ SUPPORTED_REPOS=(
     python-pipenv-lock
     ruby-gemfile
     ruby-gemfile-lock
+    npm-lock
+    yarn
+    pnpm
+    bun
+    npm-workspace
+    yarn-workspace
+    pnpm-workspace
+    bun-workspace
 )
 
 printf "${BOLD}=== Vulnetix Supported Repo Scan ===${NC}\n"
@@ -41,7 +49,13 @@ for repo in "${SUPPORTED_REPOS[@]}"; do
         continue
     fi
 
-    scanned=$(echo "$output" | grep -oP '\d+ packages' | head -1 | grep -oP '^\d+')
+    if is_workspace_repo "$repo" && echo "$output" | grep -qE "has no lockfile|member of the workspace"; then
+        printf "%-35s %8d %8s ${RED}%s${NC}\n" "$repo" "$expected" "—" "WORKSPACE MEMBER UNRESOLVED"
+        FAIL=$((FAIL + 1))
+        continue
+    fi
+
+    scanned=$(echo "$output" | scanned_count)
     scanned=${scanned:-0}
 
     if [ "$scanned" -eq "$expected" ]; then

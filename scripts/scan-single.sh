@@ -32,8 +32,15 @@ if ! echo "$output" | grep -qE "Parsing [0-9]+ detected file"; then
     exit 1
 fi
 
+# A workspace member has no lockfile beside it by design: the root's lock covers it.
+if is_workspace_repo "$REPO" && echo "$output" | grep -qE "has no lockfile|member of the workspace"; then
+    echo "$output" | grep -E "has no lockfile|member of the workspace"
+    printf "  ${RED}FAIL: a workspace member was not resolved from the root lockfile${NC}\n"
+    exit 1
+fi
+
 # Extract scanned package count: "N packages"
-scanned=$(echo "$output" | grep -oP '\d+ packages' | head -1 | grep -oP '^\d+') || true
+scanned=$(echo "$output" | scanned_count) || true
 scanned=${scanned:-0}
 
 echo ""

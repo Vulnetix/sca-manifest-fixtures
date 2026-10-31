@@ -54,6 +54,13 @@ declare -A EXPECTED=(
     [npm-lock]=5
     [yarn]=5
     [pnpm]=5
+    [bun]=5
+    # Monorepos: one lockfile at the root, none beside each member. The five
+    # direct dependencies are split across the root and two members.
+    [npm-workspace]=5
+    [yarn-workspace]=5
+    [pnpm-workspace]=5
+    [bun-workspace]=5
     [go-mod]=5
     [go-sum]=5
     [java-maven]=5
@@ -75,3 +82,18 @@ declare -A EXPECTED=(
     [sbom-spdx]=5
     [sbom-cyclonedx]=5
 )
+
+# scanned_count reads the number of packages the scan parsed from its output on
+# stdin: the "Parsed N package(s)" progress line. Matching the first "N packages"
+# instead read the findings summary ("2 packages" with advisories), so every
+# fixture with a clean dependency scored a mismatch.
+scanned_count() {
+    grep -oP 'Parsed \K\d+(?= package)' | tail -1
+}
+
+# is_workspace_repo NAME: true for a monorepo fixture. Its members have no
+# lockfile beside them by design, so a "has no lockfile" note for one is a
+# regression (Vulnetix/cli#177), never the expected unresolved case.
+is_workspace_repo() {
+    [[ "$1" == *-workspace ]]
+}
