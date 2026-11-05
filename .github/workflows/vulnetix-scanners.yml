@@ -21,7 +21,7 @@ jobs:
     runs-on: [self-hosted, Linux, X64, vulnetix-local]
     timeout-minutes: 60
     steps:
-      - uses: actions/checkout@v5.1.0
+      - uses: actions/checkout@v7.0.1
       - name: Set up uv
         continue-on-error: true
         uses: astral-sh/setup-uv@v6.8.0
@@ -59,7 +59,7 @@ jobs:
     runs-on: [self-hosted, Linux, X64, vulnetix-local]
     timeout-minutes: 60
     steps:
-      - uses: actions/checkout@v5.1.0
+      - uses: actions/checkout@v7.0.1
       - name: Run Bearer
         continue-on-error: true
         shell: bash --noprofile --norc {0}
@@ -90,7 +90,7 @@ jobs:
     runs-on: [self-hosted, Linux, X64, vulnetix-local]
     timeout-minutes: 60
     steps:
-      - uses: actions/checkout@v5.1.0
+      - uses: actions/checkout@v7.0.1
       - name: Set up Ruby
         continue-on-error: true
         uses: ruby/setup-ruby@v1.336.0
@@ -123,7 +123,7 @@ jobs:
     runs-on: [self-hosted, Linux, X64, vulnetix-local]
     timeout-minutes: 60
     steps:
-      - uses: actions/checkout@v5.1.0
+      - uses: actions/checkout@v7.0.1
       - name: Set up Node.js
         continue-on-error: true
         uses: actions/setup-node@v4.4.0
@@ -155,7 +155,7 @@ jobs:
     runs-on: [self-hosted, Linux, X64, vulnetix-local]
     timeout-minutes: 60
     steps:
-      - uses: actions/checkout@v5.1.0
+      - uses: actions/checkout@v7.0.1
       - name: Set up uv
         continue-on-error: true
         uses: astral-sh/setup-uv@v6.8.0
@@ -185,7 +185,7 @@ jobs:
     runs-on: [self-hosted, Linux, X64, vulnetix-local]
     timeout-minutes: 60
     steps:
-      - uses: actions/checkout@v5.1.0
+      - uses: actions/checkout@v7.0.1
       - name: Run Clippy
         continue-on-error: true
         shell: bash --noprofile --norc {0}
@@ -214,7 +214,7 @@ jobs:
     runs-on: [self-hosted, Linux, X64, vulnetix-local]
     timeout-minutes: 60
     steps:
-      - uses: actions/checkout@v5.1.0
+      - uses: actions/checkout@v7.0.1
       - name: Run Cppcheck
         continue-on-error: true
         shell: bash --noprofile --norc {0}
@@ -267,7 +267,7 @@ jobs:
     runs-on: [self-hosted, Linux, X64, vulnetix-local]
     timeout-minutes: 60
     steps:
-      - uses: actions/checkout@v5.1.0
+      - uses: actions/checkout@v7.0.1
       - name: Set up .NET
         continue-on-error: true
         uses: actions/setup-dotnet@v4.3.1
@@ -305,7 +305,7 @@ jobs:
     runs-on: [self-hosted, Linux, X64, vulnetix-local]
     timeout-minutes: 60
     steps:
-      - uses: actions/checkout@v5.1.0
+      - uses: actions/checkout@v7.0.1
       - name: Set up Go
         continue-on-error: true
         uses: actions/setup-go@v6.5.0
@@ -345,7 +345,7 @@ jobs:
     runs-on: [self-hosted, Linux, X64, vulnetix-local]
     timeout-minutes: 60
     steps:
-      - uses: actions/checkout@v5.1.0
+      - uses: actions/checkout@v7.0.1
       - name: Set up Java
         continue-on-error: true
         uses: actions/setup-java@v4.9.1
@@ -385,7 +385,7 @@ jobs:
     runs-on: [self-hosted, Linux, X64, vulnetix-local]
     timeout-minutes: 60
     steps:
-      - uses: actions/checkout@v5.1.0
+      - uses: actions/checkout@v7.0.1
       - name: Set up Node.js
         continue-on-error: true
         uses: actions/setup-node@v4.4.0
@@ -418,7 +418,7 @@ jobs:
     runs-on: [self-hosted, Linux, X64, vulnetix-local]
     timeout-minutes: 30
     steps:
-      - uses: actions/checkout@v5.1.0
+      - uses: actions/checkout@v7.0.1
       - name: Detect PHP setup capability
         id: php-setup
         shell: bash --noprofile --norc {0}
@@ -468,7 +468,7 @@ jobs:
     runs-on: [self-hosted, Linux, X64, vulnetix-local]
     timeout-minutes: 60
     steps:
-      - uses: actions/checkout@v5.1.0
+      - uses: actions/checkout@v7.0.1
       - name: Set up uv
         continue-on-error: true
         uses: astral-sh/setup-uv@v6.8.0
@@ -517,7 +517,7 @@ jobs:
     runs-on: [self-hosted, Linux, X64, vulnetix-local]
     timeout-minutes: 60
     steps:
-      - uses: actions/checkout@v5.1.0
+      - uses: actions/checkout@v7.0.1
       - name: Set up Ruby
         continue-on-error: true
         uses: ruby/setup-ruby@v1.336.0
@@ -550,7 +550,7 @@ jobs:
     runs-on: [self-hosted, Linux, X64, vulnetix-local]
     timeout-minutes: 60
     steps:
-      - uses: actions/checkout@v5.1.0
+      - uses: actions/checkout@v7.0.1
       - name: Generate Rust CycloneDX SBOM
         continue-on-error: true
         shell: bash --noprofile --norc {0}
@@ -578,7 +578,7 @@ jobs:
     runs-on: [self-hosted, Linux, X64, vulnetix-local]
     timeout-minutes: 60
     steps:
-      - uses: actions/checkout@v5.1.0
+      - uses: actions/checkout@v7.0.1
       - name: Set up uv
         continue-on-error: true
         uses: astral-sh/setup-uv@v6.8.0
@@ -692,7 +692,7 @@ jobs:
     runs-on: [self-hosted, Linux, X64, vulnetix-local]
     timeout-minutes: 60
     steps:
-      - uses: actions/checkout@v5.1.0
+      - uses: actions/checkout@v7.0.1
       - name: Set up Java
         continue-on-error: true
         uses: actions/setup-java@v4.9.1
@@ -734,7 +734,7 @@ jobs:
     runs-on: [self-hosted, Linux, X64, vulnetix-local]
     timeout-minutes: 60
     steps:
-      - uses: actions/checkout@v5.1.0
+      - uses: actions/checkout@v7.0.1
       - name: Set up Go
         continue-on-error: true
         uses: actions/setup-go@v6.5.0
@@ -780,7 +780,7 @@ jobs:
     runs-on: [self-hosted, Linux, X64, vulnetix-local]
     timeout-minutes: 60
     steps:
-      - uses: actions/checkout@v5.1.0
+      - uses: actions/checkout@v7.0.1
       - name: Set up Node.js
         continue-on-error: true
         uses: actions/setup-node@v4.4.0
@@ -822,7 +822,7 @@ jobs:
     runs-on: [self-hosted, Linux, X64, vulnetix-local]
     timeout-minutes: 60
     steps:
-      - uses: actions/checkout@v5.1.0
+      - uses: actions/checkout@v7.0.1
       - name: Set up uv
         continue-on-error: true
         uses: astral-sh/setup-uv@v6.8.0
@@ -865,7 +865,7 @@ jobs:
     runs-on: [self-hosted, Linux, X64, vulnetix-local]
     timeout-minutes: 60
     steps:
-      - uses: actions/checkout@v5.1.0
+      - uses: actions/checkout@v7.0.1
       - name: Export the dependency graph
         continue-on-error: true
         env:
@@ -897,7 +897,7 @@ jobs:
     runs-on: [self-hosted, Linux, X64, vulnetix-local]
     timeout-minutes: 60
     steps:
-      - uses: actions/checkout@v5.1.0
+      - uses: actions/checkout@v7.0.1
       - name: Run Gitleaks
         continue-on-error: true
         shell: bash --noprofile --norc {0}
@@ -923,7 +923,7 @@ jobs:
     runs-on: [self-hosted, Linux, X64, vulnetix-local]
     timeout-minutes: 60
     steps:
-      - uses: actions/checkout@v5.1.0
+      - uses: actions/checkout@v7.0.1
       - name: Set up Go
         continue-on-error: true
         uses: actions/setup-go@v6.5.0
@@ -963,7 +963,7 @@ jobs:
     runs-on: [self-hosted, Linux, X64, vulnetix-local]
     timeout-minutes: 60
     steps:
-      - uses: actions/checkout@v5.1.0
+      - uses: actions/checkout@v7.0.1
       - name: Set up Go
         continue-on-error: true
         uses: actions/setup-go@v6.5.0
@@ -1003,7 +1003,7 @@ jobs:
     runs-on: [self-hosted, Linux, X64, vulnetix-local]
     timeout-minutes: 60
     steps:
-      - uses: actions/checkout@v5.1.0
+      - uses: actions/checkout@v7.0.1
       - name: Set up Go
         continue-on-error: true
         uses: actions/setup-go@v6.5.0
@@ -1048,7 +1048,7 @@ jobs:
     runs-on: [self-hosted, Linux, X64, vulnetix-local]
     timeout-minutes: 60
     steps:
-      - uses: actions/checkout@v5.1.0
+      - uses: actions/checkout@v7.0.1
       - name: Run Grype
         id: grype
         continue-on-error: true
@@ -1075,7 +1075,7 @@ jobs:
     runs-on: [self-hosted, Linux, X64, vulnetix-local]
     timeout-minutes: 60
     steps:
-      - uses: actions/checkout@v5.1.0
+      - uses: actions/checkout@v7.0.1
       - name: Build the image
         id: build
         continue-on-error: true
@@ -1126,7 +1126,7 @@ jobs:
     name: Hadolint (Dockerfile)
     runs-on: [self-hosted, Linux, X64, vulnetix-local]
     steps:
-      - uses: actions/checkout@v5.1.0
+      - uses: actions/checkout@v7.0.1
       - name: Run Hadolint
         continue-on-error: true
         shell: bash --noprofile --norc {0}
@@ -1168,7 +1168,7 @@ jobs:
     runs-on: [self-hosted, Linux, X64, vulnetix-local]
     timeout-minutes: 60
     steps:
-      - uses: actions/checkout@v5.1.0
+      - uses: actions/checkout@v7.0.1
       - name: Run KICS
         continue-on-error: true
         shell: bash --noprofile --norc {0}
@@ -1189,7 +1189,7 @@ jobs:
     runs-on: [self-hosted, Linux, X64, vulnetix-local]
     timeout-minutes: 60
     steps:
-      - uses: actions/checkout@v5.1.0
+      - uses: actions/checkout@v7.0.1
       - name: Set up uv
         continue-on-error: true
         uses: astral-sh/setup-uv@v6.8.0
@@ -1225,7 +1225,7 @@ jobs:
     runs-on: [self-hosted, Linux, X64, vulnetix-local]
     timeout-minutes: 60
     steps:
-      - uses: actions/checkout@v5.1.0
+      - uses: actions/checkout@v7.0.1
       - name: Set up uv
         continue-on-error: true
         uses: astral-sh/setup-uv@v6.8.0
@@ -1263,7 +1263,7 @@ jobs:
     runs-on: [self-hosted, Linux, X64, vulnetix-local]
     timeout-minutes: 60
     steps:
-      - uses: actions/checkout@v5.1.0
+      - uses: actions/checkout@v7.0.1
       - name: Run Nosey Parker
         continue-on-error: true
         shell: bash --noprofile --norc {0}
@@ -1297,7 +1297,7 @@ jobs:
     runs-on: [self-hosted, Linux, X64, vulnetix-local]
     timeout-minutes: 60
     steps:
-      - uses: actions/checkout@v5.1.0
+      - uses: actions/checkout@v7.0.1
       - name: Set up Node.js
         continue-on-error: true
         uses: actions/setup-node@v4.4.0
@@ -1331,7 +1331,7 @@ jobs:
     runs-on: [self-hosted, Linux, X64, vulnetix-local]
     timeout-minutes: 60
     steps:
-      - uses: actions/checkout@v5.1.0
+      - uses: actions/checkout@v7.0.1
       - name: Run OpenGrep
         continue-on-error: true
         shell: bash --noprofile --norc {0}
@@ -1365,7 +1365,7 @@ jobs:
     runs-on: [self-hosted, Linux, X64, vulnetix-local]
     timeout-minutes: 60
     steps:
-      - uses: actions/checkout@v5.1.0
+      - uses: actions/checkout@v7.0.1
       - name: Run OSV-Scanner
         continue-on-error: true
         uses: google/osv-scanner-action/osv-scanner-action@v2.3.8
@@ -1387,7 +1387,7 @@ jobs:
     runs-on: [self-hosted, Linux, X64, vulnetix-local]
     timeout-minutes: 330
     steps:
-      - uses: actions/checkout@v5.1.0
+      - uses: actions/checkout@v7.0.1
       - name: Set up Java
         continue-on-error: true
         uses: actions/setup-java@v4.9.1
@@ -1443,7 +1443,7 @@ jobs:
     runs-on: [self-hosted, Linux, X64, vulnetix-local]
     timeout-minutes: 60
     steps:
-      - uses: actions/checkout@v5.1.0
+      - uses: actions/checkout@v7.0.1
       - name: Run PMD
         continue-on-error: true
         uses: pmd/pmd-github-action@v2.0.0
@@ -1464,7 +1464,7 @@ jobs:
     runs-on: [self-hosted, Linux, X64, vulnetix-local]
     timeout-minutes: 30
     steps:
-      - uses: actions/checkout@v5.1.0
+      - uses: actions/checkout@v7.0.1
       - name: Detect PHP setup capability
         id: php-setup
         shell: bash --noprofile --norc {0}
@@ -1523,7 +1523,7 @@ jobs:
     runs-on: [self-hosted, Linux, X64, vulnetix-local]
     timeout-minutes: 60
     steps:
-      - uses: actions/checkout@v5.1.0
+      - uses: actions/checkout@v7.0.1
       - name: Run Regula
         continue-on-error: true
         shell: bash --noprofile --norc {0}
@@ -1556,7 +1556,7 @@ jobs:
     runs-on: [self-hosted, Linux, X64, vulnetix-local]
     timeout-minutes: 60
     steps:
-      - uses: actions/checkout@v5.1.0
+      - uses: actions/checkout@v7.0.1
       - name: Set up Node.js
         continue-on-error: true
         uses: actions/setup-node@v4.4.0
@@ -1588,7 +1588,7 @@ jobs:
     runs-on: [self-hosted, Linux, X64, vulnetix-local]
     timeout-minutes: 60
     steps:
-      - uses: actions/checkout@v5.1.0
+      - uses: actions/checkout@v7.0.1
       - name: Set up Ruby
         continue-on-error: true
         uses: ruby/setup-ruby@v1.336.0
@@ -1716,7 +1716,7 @@ jobs:
     runs-on: [self-hosted, Linux, X64, vulnetix-local]
     timeout-minutes: 60
     steps:
-      - uses: actions/checkout@v5.1.0
+      - uses: actions/checkout@v7.0.1
       - name: Set up uv
         continue-on-error: true
         uses: astral-sh/setup-uv@v6.8.0
@@ -1754,7 +1754,7 @@ jobs:
     runs-on: [self-hosted, Linux, X64, vulnetix-local]
     timeout-minutes: 60
     steps:
-      - uses: actions/checkout@v5.1.0
+      - uses: actions/checkout@v7.0.1
       - name: Set up uv
         continue-on-error: true
         uses: astral-sh/setup-uv@v6.8.0
@@ -1812,7 +1812,7 @@ jobs:
     runs-on: [self-hosted, Linux, X64, vulnetix-local]
     timeout-minutes: 60
     steps:
-      - uses: actions/checkout@v5.1.0
+      - uses: actions/checkout@v7.0.1
       - name: Set up uv
         continue-on-error: true
         uses: astral-sh/setup-uv@v6.8.0
@@ -1842,7 +1842,7 @@ jobs:
     runs-on: [self-hosted, Linux, X64, vulnetix-local]
     timeout-minutes: 60
     steps:
-      - uses: actions/checkout@v5.1.0
+      - uses: actions/checkout@v7.0.1
       - name: Run ShellCheck
         continue-on-error: true
         shell: bash --noprofile --norc {0}
@@ -1965,7 +1965,7 @@ jobs:
     runs-on: [self-hosted, Linux, X64, vulnetix-local]
     timeout-minutes: 60
     steps:
-      - uses: actions/checkout@v5.1.0
+      - uses: actions/checkout@v7.0.1
       - name: Run SwiftLint
         continue-on-error: true
         shell: bash --noprofile --norc {0}
@@ -1997,7 +1997,7 @@ jobs:
     runs-on: [self-hosted, Linux, X64, vulnetix-local]
     timeout-minutes: 60
     steps:
-      - uses: actions/checkout@v5.1.0
+      - uses: actions/checkout@v7.0.1
       - name: Generate CycloneDX SBOM
         continue-on-error: true
         uses: anchore/sbom-action@v0.24.0
@@ -2019,7 +2019,7 @@ jobs:
     runs-on: [self-hosted, Linux, X64, vulnetix-local]
     timeout-minutes: 60
     steps:
-      - uses: actions/checkout@v5.1.0
+      - uses: actions/checkout@v7.0.1
       - name: Build the image
         id: build
         continue-on-error: true
@@ -2068,7 +2068,7 @@ jobs:
     runs-on: [self-hosted, Linux, X64, vulnetix-local]
     timeout-minutes: 60
     steps:
-      - uses: actions/checkout@v5.1.0
+      - uses: actions/checkout@v7.0.1
       - name: Run Terrascan
         continue-on-error: true
         shell: bash --noprofile --norc {0}
@@ -2104,7 +2104,7 @@ jobs:
     runs-on: [self-hosted, Linux, X64, vulnetix-local]
     timeout-minutes: 60
     steps:
-      - uses: actions/checkout@v5.1.0
+      - uses: actions/checkout@v7.0.1
       - name: Run TFLint
         continue-on-error: true
         shell: bash --noprofile --norc {0}
@@ -2140,7 +2140,7 @@ jobs:
     runs-on: [self-hosted, Linux, X64, vulnetix-local]
     timeout-minutes: 60
     steps:
-      - uses: actions/checkout@v5.1.0
+      - uses: actions/checkout@v7.0.1
       - name: Run tfsec
         continue-on-error: true
         uses: aquasecurity/tfsec-sarif-action@v0.1.4
@@ -2159,7 +2159,7 @@ jobs:
     runs-on: [self-hosted, Linux, X64, vulnetix-local]
     timeout-minutes: 60
     steps:
-      - uses: actions/checkout@v5.1.0
+      - uses: actions/checkout@v7.0.1
       - name: Trivy config
         continue-on-error: true
         uses: aquasecurity/trivy-action@v0.36.0
@@ -2181,7 +2181,7 @@ jobs:
     runs-on: [self-hosted, Linux, X64, vulnetix-local]
     timeout-minutes: 60
     steps:
-      - uses: actions/checkout@v5.1.0
+      - uses: actions/checkout@v7.0.1
       - name: Trivy filesystem (CycloneDX)
         continue-on-error: true
         uses: aquasecurity/trivy-action@v0.36.0
@@ -2213,7 +2213,7 @@ jobs:
     runs-on: [self-hosted, Linux, X64, vulnetix-local]
     timeout-minutes: 60
     steps:
-      - uses: actions/checkout@v5.1.0
+      - uses: actions/checkout@v7.0.1
       - name: Build the image
         id: build
         continue-on-error: true
@@ -2263,7 +2263,7 @@ jobs:
     runs-on: [self-hosted, Linux, X64, vulnetix-local]
     timeout-minutes: 60
     steps:
-      - uses: actions/checkout@v5.1.0
+      - uses: actions/checkout@v7.0.1
       - name: Run TruffleHog
         continue-on-error: true
         shell: bash --noprofile --norc {0}
@@ -2391,7 +2391,7 @@ jobs:
     runs-on: [self-hosted, Linux, X64, vulnetix-local]
     timeout-minutes: 60
     steps:
-      - uses: actions/checkout@v5.1.0
+      - uses: actions/checkout@v7.0.1
       - name: Set up Node.js
         continue-on-error: true
         uses: actions/setup-node@v4.4.0
@@ -2425,7 +2425,7 @@ jobs:
     runs-on: [self-hosted, Linux, X64, vulnetix-local]
     timeout-minutes: 60
     steps:
-      - uses: actions/checkout@v5.1.0
+      - uses: actions/checkout@v7.0.1
       - name: Set up uv
         continue-on-error: true
         uses: astral-sh/setup-uv@v6.8.0
@@ -2475,7 +2475,7 @@ jobs:
       VULNETIX_ORG_ID: ${{ secrets.VULNETIX_ORG_ID }}
       VULNETIX_API_KEY: ${{ secrets.VULNETIX_API_KEY }}
     steps:
-      - uses: actions/checkout@v5.1.0
+      - uses: actions/checkout@v7.0.1
       - name: Install Vulnetix CLI
         run: |
           curl -fsSL https://cli.vulnetix.com/install.sh | sh -s -- --install-dir "$HOME/.local/bin"
