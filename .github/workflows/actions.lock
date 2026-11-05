@@ -18,7 +18,7 @@ workflows:
         - 'aquasecurity/tfsec-sarif-action@v0.1.4'
         - 'aquasecurity/trivy-action@v0.36.0'
         - 'astral-sh/setup-uv@v6.8.0'
-        - 'google/osv-scanner-action@v2.3.8'
+        - 'google/osv-scanner-action@v2.7.0'
         - 'pmd/pmd-github-action@v2.0.0'
         - 'ruby/setup-ruby@v1.336.0'
         - 'shivammathur/setup-php@2.40.0'
@@ -139,9 +139,9 @@ dependencies:
         commit: 'sha1-d0cc045d04ccac9d8b7881df0226f9e82c39688e'
         owner_id: 115962839
         repo_id: 846733598
-    'google/osv-scanner-action@v2.3.8':
-        ref: 'v2.3.8'
-        commit: 'sha1-9a498708959aeaef5ef730655706c5a1df1edbc2'
+    'google/osv-scanner-action@v2.7.0':
+        ref: 'v2.7.0'
+        commit: 'sha1-b1d267aea5211fa648d9d442fa64b90dbdcbdd36'
         owner_id: 1342004
         repo_id: 736073144
     'pmd/pmd-github-action@v2.0.0':
