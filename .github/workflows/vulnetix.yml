@@ -1,113 +1,411 @@
+# Managed by `vulnetix gha init`. Edit .vulnetix/workflow.yaml and re-run it.
 name: Vulnetix Security
 
 on:
   push:
-  # A release cut from a tag that already existed produces no push event, so
-  # the tag-push trigger above does not cover it.
+    branches: [main]
   release:
     types: [published]
   workflow_dispatch:
 
-env:
-  VULNETIX_VERSION: v3.56.2
+permissions:
+  contents: read
 
 jobs:
-  analyze:
-    name: ${{ matrix.name }}
+  secrets:
+    name: Secrets
     runs-on: [self-hosted, Linux, X64, vulnetix-local]
-    permissions:
-      contents: read
-    env:
-      VULNETIX_ORG_ID: ${{ secrets.VULNETIX_ORG_ID }}
-      VULNETIX_API_KEY: ${{ secrets.VULNETIX_API_KEY }}
-    strategy:
-      fail-fast: false
-      matrix:
-        include:
-          - id: sca
-            name: SCA
-            run: vulnetix sca --no-banner --no-progress --verbose
-            artifact: .vulnetix/sbom.cdx.json
-          - id: secrets
-            name: Secrets
-            run: vulnetix secrets --ignore-binaries --ignore-git --no-banner --no-progress --verbose
-            artifact: .vulnetix/sast.sarif
-          - id: licenses
-            name: Licenses
-            run: vulnetix license --no-banner --no-progress --verbose
-            artifact: .vulnetix/sbom.cdx.json
-          - id: cbom
-            name: CBOM
-            run: vulnetix cbom --no-banner --no-progress --verbose
-            artifact: .vulnetix/cbom.cdx.json
-          - id: aibom
-            name: AIBOM
-            run: vulnetix aibom --commit-scan-max 1 --no-banner --no-progress --verbose
-            artifact: .vulnetix/ai-bom.cdx.json
-
+    timeout-minutes: 60
     steps:
-      - uses: actions/checkout@v5
-
-      - name: Install Vulnetix CLI
-        run: |
-          curl -fsSL https://cli.vulnetix.com/install.sh             | sh -s -- --install-dir "$HOME/.local/bin" --version "$VULNETIX_VERSION"
-          echo "$HOME/.local/bin" >> "$GITHUB_PATH"
-
-      - name: Authenticate with Vulnetix
-        run: vulnetix auth login --noninteractive --store project --no-banner --no-progress --verbose
-
-      - name: Verify Vulnetix authentication
-        run: vulnetix auth verify --no-banner --no-progress --verbose
-
-      - name: Run ${{ matrix.name }}
-        continue-on-error: true
-        run: |
-          ${{ matrix.run }}
-
-      - name: Upload ${{ matrix.name }} artifact
-        uses: actions/upload-artifact@v6
+      - uses: actions/checkout@v7.0.1
+      - uses: Vulnetix/cli/secrets@v4.23.0
         with:
-          name: ${{ matrix.id }}
-          path: ${{ matrix.artifact }}
-          if-no-files-found: warn
-          retention-days: 7
+          org-id: ${{ secrets.VULNETIX_ORG_ID }}
+          api-key: ${{ secrets.VULNETIX_API_KEY }}
+          extra-args: |
+            --ignore-binaries
+            --ignore-git
+          artifact-name: secrets
+          fail-on-findings: false
+          rules: |
+            Vulnetix/community-rules
+            Vulnetix/opa-fugue-regula
+            Vulnetix/opa-checkmarx-kics
+            Vulnetix/opa-cds-aws-tf
+            Vulnetix/opa-cigna-tf
+            Vulnetix/opa-aquasecurity-trivy
+
+  sca-bun:
+    name: SCA bun
+    runs-on: [self-hosted, Linux, X64, vulnetix-local]
+    timeout-minutes: 60
+    steps:
+      - uses: actions/checkout@v7.0.1
+      - uses: Vulnetix/cli/sca/bun@v4.23.0
+        with:
+          org-id: ${{ secrets.VULNETIX_ORG_ID }}
+          api-key: ${{ secrets.VULNETIX_API_KEY }}
+          artifact-name: sca-bun
+          fail-on-findings: false
+
+  sca-bundler:
+    name: SCA bundler
+    runs-on: [self-hosted, Linux, X64, vulnetix-local]
+    timeout-minutes: 60
+    steps:
+      - uses: actions/checkout@v7.0.1
+      - uses: Vulnetix/cli/sca/bundler@v4.23.0
+        with:
+          org-id: ${{ secrets.VULNETIX_ORG_ID }}
+          api-key: ${{ secrets.VULNETIX_API_KEY }}
+          artifact-name: sca-bundler
+          fail-on-findings: false
+
+  sca-cargo:
+    name: SCA cargo
+    runs-on: [self-hosted, Linux, X64, vulnetix-local]
+    timeout-minutes: 60
+    steps:
+      - uses: actions/checkout@v7.0.1
+      - uses: Vulnetix/cli/sca/cargo@v4.23.0
+        with:
+          org-id: ${{ secrets.VULNETIX_ORG_ID }}
+          api-key: ${{ secrets.VULNETIX_API_KEY }}
+          artifact-name: sca-cargo
+          fail-on-findings: false
+
+  sca-cocoapods:
+    name: SCA cocoapods
+    runs-on: [self-hosted, Linux, X64, vulnetix-local]
+    timeout-minutes: 60
+    steps:
+      - uses: actions/checkout@v7.0.1
+      - uses: Vulnetix/cli/sca/cocoapods@v4.23.0
+        with:
+          org-id: ${{ secrets.VULNETIX_ORG_ID }}
+          api-key: ${{ secrets.VULNETIX_API_KEY }}
+          artifact-name: sca-cocoapods
+          fail-on-findings: false
+
+  sca-composer:
+    name: SCA composer
+    runs-on: [self-hosted, Linux, X64, vulnetix-local]
+    timeout-minutes: 60
+    steps:
+      - uses: actions/checkout@v7.0.1
+      - uses: Vulnetix/cli/sca/composer@v4.23.0
+        with:
+          org-id: ${{ secrets.VULNETIX_ORG_ID }}
+          api-key: ${{ secrets.VULNETIX_API_KEY }}
+          artifact-name: sca-composer
+          fail-on-findings: false
+
+  sca-go:
+    name: SCA go
+    runs-on: [self-hosted, Linux, X64, vulnetix-local]
+    timeout-minutes: 60
+    steps:
+      - uses: actions/checkout@v7.0.1
+      - uses: Vulnetix/cli/sca/go@v4.23.0
+        with:
+          org-id: ${{ secrets.VULNETIX_ORG_ID }}
+          api-key: ${{ secrets.VULNETIX_API_KEY }}
+          artifact-name: sca-go
+          fail-on-findings: false
+
+  sca-gradle:
+    name: SCA gradle
+    runs-on: [self-hosted, Linux, X64, vulnetix-local]
+    timeout-minutes: 60
+    steps:
+      - uses: actions/checkout@v7.0.1
+      - uses: Vulnetix/cli/sca/gradle@v4.23.0
+        with:
+          org-id: ${{ secrets.VULNETIX_ORG_ID }}
+          api-key: ${{ secrets.VULNETIX_API_KEY }}
+          artifact-name: sca-gradle
+          fail-on-findings: false
+
+  sca-hex:
+    name: SCA hex
+    runs-on: [self-hosted, Linux, X64, vulnetix-local]
+    timeout-minutes: 60
+    steps:
+      - uses: actions/checkout@v7.0.1
+      - uses: Vulnetix/cli/sca/hex@v4.23.0
+        with:
+          org-id: ${{ secrets.VULNETIX_ORG_ID }}
+          api-key: ${{ secrets.VULNETIX_API_KEY }}
+          artifact-name: sca-hex
+          fail-on-findings: false
+
+  sca-maven:
+    name: SCA maven
+    runs-on: [self-hosted, Linux, X64, vulnetix-local]
+    timeout-minutes: 60
+    steps:
+      - uses: actions/checkout@v7.0.1
+      - uses: Vulnetix/cli/sca/maven@v4.23.0
+        with:
+          org-id: ${{ secrets.VULNETIX_ORG_ID }}
+          api-key: ${{ secrets.VULNETIX_API_KEY }}
+          artifact-name: sca-maven
+          fail-on-findings: false
+
+  sca-npm:
+    name: SCA npm
+    runs-on: [self-hosted, Linux, X64, vulnetix-local]
+    timeout-minutes: 60
+    steps:
+      - uses: actions/checkout@v7.0.1
+      - uses: Vulnetix/cli/sca/npm@v4.23.0
+        with:
+          org-id: ${{ secrets.VULNETIX_ORG_ID }}
+          api-key: ${{ secrets.VULNETIX_API_KEY }}
+          artifact-name: sca-npm
+          fail-on-findings: false
+
+  sca-nuget:
+    name: SCA nuget
+    runs-on: [self-hosted, Linux, X64, vulnetix-local]
+    timeout-minutes: 60
+    steps:
+      - uses: actions/checkout@v7.0.1
+      - uses: Vulnetix/cli/sca/nuget@v4.23.0
+        with:
+          org-id: ${{ secrets.VULNETIX_ORG_ID }}
+          api-key: ${{ secrets.VULNETIX_API_KEY }}
+          artifact-name: sca-nuget
+          fail-on-findings: false
+
+  sca-pip:
+    name: SCA pip
+    runs-on: [self-hosted, Linux, X64, vulnetix-local]
+    timeout-minutes: 60
+    steps:
+      - uses: actions/checkout@v7.0.1
+      - uses: Vulnetix/cli/sca/pip@v4.23.0
+        with:
+          org-id: ${{ secrets.VULNETIX_ORG_ID }}
+          api-key: ${{ secrets.VULNETIX_API_KEY }}
+          artifact-name: sca-pip
+          fail-on-findings: false
+
+  sca-pipenv:
+    name: SCA pipenv
+    runs-on: [self-hosted, Linux, X64, vulnetix-local]
+    timeout-minutes: 60
+    steps:
+      - uses: actions/checkout@v7.0.1
+      - uses: Vulnetix/cli/sca/pipenv@v4.23.0
+        with:
+          org-id: ${{ secrets.VULNETIX_ORG_ID }}
+          api-key: ${{ secrets.VULNETIX_API_KEY }}
+          artifact-name: sca-pipenv
+          fail-on-findings: false
+
+  sca-pnpm:
+    name: SCA pnpm
+    runs-on: [self-hosted, Linux, X64, vulnetix-local]
+    timeout-minutes: 60
+    steps:
+      - uses: actions/checkout@v7.0.1
+      - uses: Vulnetix/cli/sca/pnpm@v4.23.0
+        with:
+          org-id: ${{ secrets.VULNETIX_ORG_ID }}
+          api-key: ${{ secrets.VULNETIX_API_KEY }}
+          artifact-name: sca-pnpm
+          fail-on-findings: false
+
+  sca-poetry:
+    name: SCA poetry
+    runs-on: [self-hosted, Linux, X64, vulnetix-local]
+    timeout-minutes: 60
+    steps:
+      - uses: actions/checkout@v7.0.1
+      - uses: Vulnetix/cli/sca/poetry@v4.23.0
+        with:
+          org-id: ${{ secrets.VULNETIX_ORG_ID }}
+          api-key: ${{ secrets.VULNETIX_API_KEY }}
+          artifact-name: sca-poetry
+          fail-on-findings: false
+
+  sca-pub:
+    name: SCA pub
+    runs-on: [self-hosted, Linux, X64, vulnetix-local]
+    timeout-minutes: 60
+    steps:
+      - uses: actions/checkout@v7.0.1
+      - uses: Vulnetix/cli/sca/pub@v4.23.0
+        with:
+          org-id: ${{ secrets.VULNETIX_ORG_ID }}
+          api-key: ${{ secrets.VULNETIX_API_KEY }}
+          artifact-name: sca-pub
+          fail-on-findings: false
+
+  sca-swift:
+    name: SCA swift
+    runs-on: [self-hosted, Linux, X64, vulnetix-local]
+    timeout-minutes: 60
+    steps:
+      - uses: actions/checkout@v7.0.1
+      - uses: Vulnetix/cli/sca/swift@v4.23.0
+        with:
+          org-id: ${{ secrets.VULNETIX_ORG_ID }}
+          api-key: ${{ secrets.VULNETIX_API_KEY }}
+          artifact-name: sca-swift
+          fail-on-findings: false
+
+  sca-uv:
+    name: SCA uv
+    runs-on: [self-hosted, Linux, X64, vulnetix-local]
+    timeout-minutes: 60
+    steps:
+      - uses: actions/checkout@v7.0.1
+      - uses: Vulnetix/cli/sca/uv@v4.23.0
+        with:
+          org-id: ${{ secrets.VULNETIX_ORG_ID }}
+          api-key: ${{ secrets.VULNETIX_API_KEY }}
+          artifact-name: sca-uv
+          fail-on-findings: false
+
+  sca-yarn:
+    name: SCA yarn
+    runs-on: [self-hosted, Linux, X64, vulnetix-local]
+    timeout-minutes: 60
+    steps:
+      - uses: actions/checkout@v7.0.1
+      - uses: Vulnetix/cli/sca/yarn@v4.23.0
+        with:
+          org-id: ${{ secrets.VULNETIX_ORG_ID }}
+          api-key: ${{ secrets.VULNETIX_API_KEY }}
+          artifact-name: sca-yarn
+          fail-on-findings: false
+
+  iac:
+    name: IaC
+    runs-on: [self-hosted, Linux, X64, vulnetix-local]
+    timeout-minutes: 60
+    steps:
+      - uses: actions/checkout@v7.0.1
+      - uses: Vulnetix/cli/iac@v4.23.0
+        with:
+          org-id: ${{ secrets.VULNETIX_ORG_ID }}
+          api-key: ${{ secrets.VULNETIX_API_KEY }}
+          artifact-name: iac
+          fail-on-findings: false
+          rules: |
+            Vulnetix/community-rules
+            Vulnetix/opa-fugue-regula
+            Vulnetix/opa-checkmarx-kics
+            Vulnetix/opa-cds-aws-tf
+            Vulnetix/opa-cigna-tf
+            Vulnetix/opa-aquasecurity-trivy
+            Vulnetix/opa-snyk-labs-iac
+
+  containers:
+    name: Containers
+    runs-on: [self-hosted, Linux, X64, vulnetix-local]
+    timeout-minutes: 60
+    steps:
+      - uses: actions/checkout@v7.0.1
+      - uses: Vulnetix/cli/containers@v4.23.0
+        with:
+          org-id: ${{ secrets.VULNETIX_ORG_ID }}
+          api-key: ${{ secrets.VULNETIX_API_KEY }}
+          artifact-name: containers
+          fail-on-findings: false
+          rules: |
+            Vulnetix/community-rules
+            Vulnetix/opa-fugue-regula
+            Vulnetix/opa-checkmarx-kics
+            Vulnetix/opa-cds-aws-tf
+            Vulnetix/opa-cigna-tf
+            Vulnetix/opa-aquasecurity-trivy
+
+  license:
+    name: License
+    runs-on: [self-hosted, Linux, X64, vulnetix-local]
+    timeout-minutes: 60
+    steps:
+      - uses: actions/checkout@v7.0.1
+      - uses: Vulnetix/cli/license@v4.23.0
+        with:
+          org-id: ${{ secrets.VULNETIX_ORG_ID }}
+          api-key: ${{ secrets.VULNETIX_API_KEY }}
+          artifact-name: license
+          fail-on-findings: false
+
+  cbom:
+    name: CBOM
+    runs-on: [self-hosted, Linux, X64, vulnetix-local]
+    timeout-minutes: 60
+    steps:
+      - uses: actions/checkout@v7.0.1
+      - uses: Vulnetix/cli/cbom@v4.23.0
+        with:
+          org-id: ${{ secrets.VULNETIX_ORG_ID }}
+          api-key: ${{ secrets.VULNETIX_API_KEY }}
+          artifact-name: cbom
+          fail-on-findings: false
+
+  aibom:
+    name: AIBOM
+    runs-on: [self-hosted, Linux, X64, vulnetix-local]
+    timeout-minutes: 60
+    steps:
+      - uses: actions/checkout@v7.0.1
+      - uses: Vulnetix/cli/aibom@v4.23.0
+        with:
+          org-id: ${{ secrets.VULNETIX_ORG_ID }}
+          api-key: ${{ secrets.VULNETIX_API_KEY }}
+          artifact-name: aibom
+          fail-on-findings: false
+          extra-args: |
+            --commit-scan-max
+            1
+
+  analyze:
+    name: Analyze
+    runs-on: [self-hosted, Linux, X64, vulnetix-local]
+    timeout-minutes: 60
+    steps:
+      - uses: actions/checkout@v7.0.1
+        with:
+          fetch-depth: 0
+      - uses: Vulnetix/cli/analyze@v4.23.0
+        with:
+          org-id: ${{ secrets.VULNETIX_ORG_ID }}
+          api-key: ${{ secrets.VULNETIX_API_KEY }}
+          artifact-name: analyze
+          fail-on-findings: false
+
+  sbom:
+    name: SBOM
+    runs-on: [self-hosted, Linux, X64, vulnetix-local]
+    timeout-minutes: 60
+    steps:
+      - uses: actions/checkout@v7.0.1
+      - uses: Vulnetix/cli/sbom@v4.23.0
+        with:
+          org-id: ${{ secrets.VULNETIX_ORG_ID }}
+          api-key: ${{ secrets.VULNETIX_API_KEY }}
+          artifact-name: sca
+          fail-on-findings: false
 
   publish:
     name: Publish
     runs-on: [self-hosted, Linux, X64, vulnetix-local]
-    needs: analyze
+    if: ${{ !cancelled() }}
+    needs: [secrets, sca-bun, sca-bundler, sca-cargo, sca-cocoapods, sca-composer, sca-go, sca-gradle, sca-hex, sca-maven, sca-npm, sca-nuget, sca-pip, sca-pipenv, sca-pnpm, sca-poetry, sca-pub, sca-swift, sca-uv, sca-yarn, iac, containers, license, cbom, aibom, analyze, sbom]
     permissions:
       contents: read
       actions: read
-    env:
-      VULNETIX_ORG_ID: ${{ secrets.VULNETIX_ORG_ID }}
-      VULNETIX_API_KEY: ${{ secrets.VULNETIX_API_KEY }}
-
+    timeout-minutes: 60
     steps:
-      - uses: actions/checkout@v5
-
-      - name: Install Vulnetix CLI
-        run: |
-          curl -fsSL https://cli.vulnetix.com/install.sh             | sh -s -- --install-dir "$HOME/.local/bin" --version "$VULNETIX_VERSION"
-          echo "$HOME/.local/bin" >> "$GITHUB_PATH"
-
-      - name: Authenticate with Vulnetix
-        run: vulnetix auth login --noninteractive --store project --no-banner --no-progress --verbose
-
-      - name: Upload all artifacts to Vulnetix
-        env:
-          GITHUB_TOKEN: ${{ github.token }}
-        run: vulnetix gha upload --org-id "$VULNETIX_ORG_ID" --json --no-banner --no-progress --verbose
-
-  publish-tea:
-    name: TEA
-    needs: analyze
-    # `needs` alone would skip this whenever any one of the scanner legs fails
-    # or is cancelled, which on the self-hosted pool is routine. The design
-    # publishes whatever evidence exists, so a partial scan must still publish.
-    # `!cancelled()` still stops it when the whole run is cancelled.
-    if: ${{ !cancelled() }}
-    uses: Vulnetix/cli/.github/workflows/tea-release.yml@tea-release-v1
-    with:
-      visibility: public
-    secrets: inherit
+      - uses: actions/checkout@v7.0.1
+      - uses: Vulnetix/cli/gha-upload@v4.23.0
+        with:
+          org-id: ${{ secrets.VULNETIX_ORG_ID }}
+          api-key: ${{ secrets.VULNETIX_API_KEY }}
+          fail-on-findings: false

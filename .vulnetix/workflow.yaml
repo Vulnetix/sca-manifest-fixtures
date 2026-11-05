@@ -1,0 +1,66 @@
+version: 1
+runner: vulnetix-local
+rules:
+  secrets:
+    - Vulnetix/community-rules
+    - Vulnetix/opa-fugue-regula
+    - Vulnetix/opa-checkmarx-kics
+    - Vulnetix/opa-cds-aws-tf
+    - Vulnetix/opa-cigna-tf
+    - Vulnetix/opa-aquasecurity-trivy
+  sast:
+    - Vulnetix/community-rules
+    - Vulnetix/opa-fugue-regula
+    - Vulnetix/opa-checkmarx-kics
+    - Vulnetix/opa-cds-aws-tf
+    - Vulnetix/opa-cigna-tf
+    - Vulnetix/opa-aquasecurity-trivy
+  iac:
+    - Vulnetix/community-rules
+    - Vulnetix/opa-fugue-regula
+    - Vulnetix/opa-checkmarx-kics
+    - Vulnetix/opa-cds-aws-tf
+    - Vulnetix/opa-cigna-tf
+    - Vulnetix/opa-aquasecurity-trivy
+    - Vulnetix/opa-snyk-labs-iac
+  containers:
+    - Vulnetix/community-rules
+    - Vulnetix/opa-fugue-regula
+    - Vulnetix/opa-checkmarx-kics
+    - Vulnetix/opa-cds-aws-tf
+    - Vulnetix/opa-cigna-tf
+    - Vulnetix/opa-aquasecurity-trivy
+  "sast/go":
+    - Vulnetix/opa-gosec
+  "sast/python":
+    - Vulnetix/opa-py-ruff
+license: true
+cbom: true
+aibom: true
+analyze: true
+triggers: push
+publish: false
+sca:
+  - bun
+  - bundler
+  - cargo
+  - cocoapods
+  - composer
+  - go
+  - gradle
+  - hex
+  - maven
+  - npm
+  - nuget
+  - pip
+  - pipenv
+  - pnpm
+  - poetry
+  - pub
+  - swift
+  - uv
+  - yarn
+no_rest: true
+sast: none
+tea:
+  off: true

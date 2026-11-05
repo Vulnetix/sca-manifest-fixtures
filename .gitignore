@@ -6,3 +6,4 @@ CLAUDE.md
 # Credential files the fixtures document but must never carry
 .netrc
 .env.proxy
+!.vulnetix/workflow.yaml
