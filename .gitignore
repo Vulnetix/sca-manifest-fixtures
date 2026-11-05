@@ -7,3 +7,4 @@ CLAUDE.md
 .netrc
 .env.proxy
 !.vulnetix/workflow.yaml
+!.vulnetix/workflow.yaml
