@@ -8,3 +8,4 @@ CLAUDE.md
 .env.proxy
 !.vulnetix/workflow.yaml
 !.vulnetix/workflow.yaml
+!.vulnetix/workflow.yaml
