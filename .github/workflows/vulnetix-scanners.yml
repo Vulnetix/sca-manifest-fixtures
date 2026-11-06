@@ -21,10 +21,10 @@ jobs:
     runs-on: [self-hosted, Linux, X64, vulnetix-local]
     timeout-minutes: 60
     steps:
-      - uses: actions/checkout@v5.1.0
+      - uses: actions/checkout@v7.0.1
       - name: Set up uv
         continue-on-error: true
-        uses: astral-sh/setup-uv@v6.8.0
+        uses: astral-sh/setup-uv@v10.3.3
       - name: Run Bandit
         continue-on-error: true
         shell: bash --noprofile --norc {0}
@@ -46,7 +46,7 @@ jobs:
             echo '::warning::bandit produced no valid SARIF; dropping the artifact'
             rm -f bandit.sarif
           fi
-      - uses: actions/upload-artifact@v6.0.0
+      - uses: actions/upload-artifact@v7.0.2
         with:
           name: bandit
           path: bandit.sarif
@@ -59,7 +59,7 @@ jobs:
     runs-on: [self-hosted, Linux, X64, vulnetix-local]
     timeout-minutes: 60
     steps:
-      - uses: actions/checkout@v5.1.0
+      - uses: actions/checkout@v7.0.1
       - name: Run Bearer
         continue-on-error: true
         shell: bash --noprofile --norc {0}
@@ -77,7 +77,7 @@ jobs:
             echo '::warning::bearer produced no valid SARIF; dropping the artifact'
             rm -f bearer.sarif
           fi
-      - uses: actions/upload-artifact@v6.0.0
+      - uses: actions/upload-artifact@v7.0.2
         with:
           name: bearer
           path: bearer.sarif
@@ -90,7 +90,7 @@ jobs:
     runs-on: [self-hosted, Linux, X64, vulnetix-local]
     timeout-minutes: 60
     steps:
-      - uses: actions/checkout@v5.1.0
+      - uses: actions/checkout@v7.0.1
       - name: Set up Ruby
         continue-on-error: true
         uses: ruby/setup-ruby@v1.336.0
@@ -110,7 +110,7 @@ jobs:
             echo '::warning::brakeman produced no valid SARIF; dropping the artifact'
             rm -f brakeman.sarif
           fi
-      - uses: actions/upload-artifact@v6.0.0
+      - uses: actions/upload-artifact@v7.0.2
         with:
           name: brakeman
           path: brakeman.sarif
@@ -123,10 +123,10 @@ jobs:
     runs-on: [self-hosted, Linux, X64, vulnetix-local]
     timeout-minutes: 60
     steps:
-      - uses: actions/checkout@v5.1.0
+      - uses: actions/checkout@v7.0.1
       - name: Set up Node.js
         continue-on-error: true
-        uses: actions/setup-node@v4.4.0
+        uses: actions/setup-node@v7.1.0
         with:
           node-version: 'lts/*'
       - name: Run cdxgen
@@ -142,7 +142,7 @@ jobs:
             echo '::warning::cdxgen produced no valid CycloneDX JSON; dropping the artifact'
             rm -f cdxgen.cdx.json
           fi
-      - uses: actions/upload-artifact@v6.0.0
+      - uses: actions/upload-artifact@v7.0.2
         with:
           name: cdxgen
           path: cdxgen.cdx.json
@@ -155,10 +155,10 @@ jobs:
     runs-on: [self-hosted, Linux, X64, vulnetix-local]
     timeout-minutes: 60
     steps:
-      - uses: actions/checkout@v5.1.0
+      - uses: actions/checkout@v7.0.1
       - name: Set up uv
         continue-on-error: true
-        uses: astral-sh/setup-uv@v6.8.0
+        uses: astral-sh/setup-uv@v10.3.3
       - name: Run Checkov
         continue-on-error: true
         shell: bash --noprofile --norc {0}
@@ -172,7 +172,7 @@ jobs:
             exit 0
           fi
           uvx --from checkov checkov -d . -o sarif --output-file-path . --soft-fail || true
-      - uses: actions/upload-artifact@v6.0.0
+      - uses: actions/upload-artifact@v7.0.2
         with:
           name: checkov
           path: results.sarif
@@ -185,7 +185,7 @@ jobs:
     runs-on: [self-hosted, Linux, X64, vulnetix-local]
     timeout-minutes: 60
     steps:
-      - uses: actions/checkout@v5.1.0
+      - uses: actions/checkout@v7.0.1
       - name: Run Clippy
         continue-on-error: true
         shell: bash --noprofile --norc {0}
@@ -201,7 +201,7 @@ jobs:
             sed -n '1,20p' clippy.stderr
             rm -f clippy.sarif
           fi
-      - uses: actions/upload-artifact@v6.0.0
+      - uses: actions/upload-artifact@v7.0.2
         with:
           name: clippy
           path: clippy.sarif
@@ -214,7 +214,7 @@ jobs:
     runs-on: [self-hosted, Linux, X64, vulnetix-local]
     timeout-minutes: 60
     steps:
-      - uses: actions/checkout@v5.1.0
+      - uses: actions/checkout@v7.0.1
       - name: Run Cppcheck
         continue-on-error: true
         shell: bash --noprofile --norc {0}
@@ -254,7 +254,7 @@ jobs:
             echo '::warning::cppcheck produced no valid SARIF; dropping the artifact'
             rm -f cppcheck.sarif
           fi
-      - uses: actions/upload-artifact@v6.0.0
+      - uses: actions/upload-artifact@v7.0.2
         with:
           name: cppcheck
           path: cppcheck.sarif
@@ -267,10 +267,10 @@ jobs:
     runs-on: [self-hosted, Linux, X64, vulnetix-local]
     timeout-minutes: 60
     steps:
-      - uses: actions/checkout@v5.1.0
+      - uses: actions/checkout@v7.0.1
       - name: Set up .NET
         continue-on-error: true
-        uses: actions/setup-dotnet@v4.3.1
+        uses: actions/setup-dotnet@v6.1.0
         with:
           dotnet-version: 8.x
       - name: Generate .NET CycloneDX SBOM
@@ -292,7 +292,7 @@ jobs:
             echo '::warning::cyclonedx dotnet produced no valid CycloneDX JSON; dropping the artifact'
             rm -f cyclonedx-dotnet.cdx.json
           fi
-      - uses: actions/upload-artifact@v6.0.0
+      - uses: actions/upload-artifact@v7.0.2
         with:
           name: cyclonedx-dotnet
           path: cyclonedx-dotnet.cdx.json
@@ -305,10 +305,10 @@ jobs:
     runs-on: [self-hosted, Linux, X64, vulnetix-local]
     timeout-minutes: 60
     steps:
-      - uses: actions/checkout@v5.1.0
+      - uses: actions/checkout@v7.0.1
       - name: Set up Go
         continue-on-error: true
-        uses: actions/setup-go@v6.5.0
+        uses: actions/setup-go@v7.0.0
         with:
           go-version: stable
       - name: Generate Go CycloneDX SBOM
@@ -332,7 +332,7 @@ jobs:
             echo '::warning::cyclonedx go produced no valid CycloneDX JSON; dropping the artifact'
             rm -f cyclonedx-go.cdx.json
           fi
-      - uses: actions/upload-artifact@v6.0.0
+      - uses: actions/upload-artifact@v7.0.2
         with:
           name: cyclonedx-go
           path: cyclonedx-go.cdx.json
@@ -345,10 +345,10 @@ jobs:
     runs-on: [self-hosted, Linux, X64, vulnetix-local]
     timeout-minutes: 60
     steps:
-      - uses: actions/checkout@v5.1.0
+      - uses: actions/checkout@v7.0.1
       - name: Set up Java
         continue-on-error: true
-        uses: actions/setup-java@v4.9.1
+        uses: actions/setup-java@v6.1.0
         with:
           cache: maven
           distribution: temurin
@@ -372,7 +372,7 @@ jobs:
             echo '::warning::cyclonedx maven produced no valid CycloneDX JSON; dropping the artifact'
             rm -f cyclonedx-maven.cdx.json
           fi
-      - uses: actions/upload-artifact@v6.0.0
+      - uses: actions/upload-artifact@v7.0.2
         with:
           name: cyclonedx-maven
           path: cyclonedx-maven.cdx.json
@@ -385,10 +385,10 @@ jobs:
     runs-on: [self-hosted, Linux, X64, vulnetix-local]
     timeout-minutes: 60
     steps:
-      - uses: actions/checkout@v5.1.0
+      - uses: actions/checkout@v7.0.1
       - name: Set up Node.js
         continue-on-error: true
-        uses: actions/setup-node@v4.4.0
+        uses: actions/setup-node@v7.1.0
         with:
           node-version: 'lts/*'
       - name: Generate npm CycloneDX SBOM
@@ -405,7 +405,7 @@ jobs:
             echo '::warning::cyclonedx npm produced no valid CycloneDX JSON; dropping the artifact'
             rm -f cyclonedx-node.cdx.json
           fi
-      - uses: actions/upload-artifact@v6.0.0
+      - uses: actions/upload-artifact@v7.0.2
         with:
           name: cyclonedx-node
           path: cyclonedx-node.cdx.json
@@ -418,7 +418,7 @@ jobs:
     runs-on: [self-hosted, Linux, X64, vulnetix-local]
     timeout-minutes: 30
     steps:
-      - uses: actions/checkout@v5.1.0
+      - uses: actions/checkout@v7.0.1
       - name: Detect PHP setup capability
         id: php-setup
         shell: bash --noprofile --norc {0}
@@ -455,7 +455,7 @@ jobs:
             echo '::warning::cyclonedx php produced no valid CycloneDX JSON; dropping the artifact'
             rm -f cyclonedx-php.cdx.json
           fi
-      - uses: actions/upload-artifact@v6.0.0
+      - uses: actions/upload-artifact@v7.0.2
         with:
           name: cyclonedx-php
           path: cyclonedx-php.cdx.json
@@ -468,10 +468,10 @@ jobs:
     runs-on: [self-hosted, Linux, X64, vulnetix-local]
     timeout-minutes: 60
     steps:
-      - uses: actions/checkout@v5.1.0
+      - uses: actions/checkout@v7.0.1
       - name: Set up uv
         continue-on-error: true
-        uses: astral-sh/setup-uv@v6.8.0
+        uses: astral-sh/setup-uv@v10.3.3
       - name: Generate Python CycloneDX SBOM
         continue-on-error: true
         shell: bash --noprofile --norc {0}
@@ -504,7 +504,7 @@ jobs:
             echo '::warning::cyclonedx python produced no valid CycloneDX JSON; dropping the artifact'
             rm -f cyclonedx-python.cdx.json
           fi
-      - uses: actions/upload-artifact@v6.0.0
+      - uses: actions/upload-artifact@v7.0.2
         with:
           name: cyclonedx-python
           path: cyclonedx-python.cdx.json
@@ -517,7 +517,7 @@ jobs:
     runs-on: [self-hosted, Linux, X64, vulnetix-local]
     timeout-minutes: 60
     steps:
-      - uses: actions/checkout@v5.1.0
+      - uses: actions/checkout@v7.0.1
       - name: Set up Ruby
         continue-on-error: true
         uses: ruby/setup-ruby@v1.336.0
@@ -537,7 +537,7 @@ jobs:
             echo '::warning::cyclonedx ruby produced no valid CycloneDX JSON; dropping the artifact'
             rm -f cyclonedx-ruby.cdx.json
           fi
-      - uses: actions/upload-artifact@v6.0.0
+      - uses: actions/upload-artifact@v7.0.2
         with:
           name: cyclonedx-ruby
           path: cyclonedx-ruby.cdx.json
@@ -550,7 +550,7 @@ jobs:
     runs-on: [self-hosted, Linux, X64, vulnetix-local]
     timeout-minutes: 60
     steps:
-      - uses: actions/checkout@v5.1.0
+      - uses: actions/checkout@v7.0.1
       - name: Generate Rust CycloneDX SBOM
         continue-on-error: true
         shell: bash --noprofile --norc {0}
@@ -565,7 +565,7 @@ jobs:
             echo '::warning::cyclonedx rust produced no valid CycloneDX JSON; dropping the artifact'
             rm -f cyclonedx-rust.cdx.json
           fi
-      - uses: actions/upload-artifact@v6.0.0
+      - uses: actions/upload-artifact@v7.0.2
         with:
           name: cyclonedx-rust
           path: cyclonedx-rust.cdx.json
@@ -578,10 +578,10 @@ jobs:
     runs-on: [self-hosted, Linux, X64, vulnetix-local]
     timeout-minutes: 60
     steps:
-      - uses: actions/checkout@v5.1.0
+      - uses: actions/checkout@v7.0.1
       - name: Set up uv
         continue-on-error: true
-        uses: astral-sh/setup-uv@v6.8.0
+        uses: astral-sh/setup-uv@v10.3.3
       - name: Run detect-secrets
         continue-on-error: true
         shell: bash --noprofile --norc {0}
@@ -679,7 +679,7 @@ jobs:
             echo '::warning::detect-secrets produced no valid SARIF; dropping the artifact'
             rm -f detect-secrets-results.sarif
           fi
-      - uses: actions/upload-artifact@v6.0.0
+      - uses: actions/upload-artifact@v7.0.2
         with:
           name: detect-secrets
           path: detect-secrets-results.sarif
@@ -692,10 +692,10 @@ jobs:
     runs-on: [self-hosted, Linux, X64, vulnetix-local]
     timeout-minutes: 60
     steps:
-      - uses: actions/checkout@v5.1.0
+      - uses: actions/checkout@v7.0.1
       - name: Set up Java
         continue-on-error: true
-        uses: actions/setup-java@v4.9.1
+        uses: actions/setup-java@v6.1.0
         with:
           distribution: temurin
           java-version: 17
@@ -721,7 +721,7 @@ jobs:
             echo '::warning::detekt produced no valid SARIF; dropping the artifact'
             rm -f detekt.sarif
           fi
-      - uses: actions/upload-artifact@v6.0.0
+      - uses: actions/upload-artifact@v7.0.2
         with:
           name: detekt
           path: detekt.sarif
@@ -734,10 +734,10 @@ jobs:
     runs-on: [self-hosted, Linux, X64, vulnetix-local]
     timeout-minutes: 60
     steps:
-      - uses: actions/checkout@v5.1.0
+      - uses: actions/checkout@v7.0.1
       - name: Set up Go
         continue-on-error: true
-        uses: actions/setup-go@v6.5.0
+        uses: actions/setup-go@v7.0.0
         with:
           go-version: stable
       - name: Run Dockle
@@ -767,7 +767,7 @@ jobs:
             echo '::warning::dockle produced no valid SARIF; dropping the artifact'
             rm -f dockle.sarif
           fi
-      - uses: actions/upload-artifact@v6.0.0
+      - uses: actions/upload-artifact@v7.0.2
         with:
           name: dockle
           path: dockle.sarif
@@ -780,10 +780,10 @@ jobs:
     runs-on: [self-hosted, Linux, X64, vulnetix-local]
     timeout-minutes: 60
     steps:
-      - uses: actions/checkout@v5.1.0
+      - uses: actions/checkout@v7.0.1
       - name: Set up Node.js
         continue-on-error: true
-        uses: actions/setup-node@v4.4.0
+        uses: actions/setup-node@v7.1.0
         with:
           node-version: 'lts/*'
       - name: Run ESLint
@@ -809,7 +809,7 @@ jobs:
             echo '::warning::eslint produced no valid SARIF; dropping the artifact'
             rm -f eslint.sarif
           fi
-      - uses: actions/upload-artifact@v6.0.0
+      - uses: actions/upload-artifact@v7.0.2
         with:
           name: eslint
           path: eslint.sarif
@@ -822,10 +822,10 @@ jobs:
     runs-on: [self-hosted, Linux, X64, vulnetix-local]
     timeout-minutes: 60
     steps:
-      - uses: actions/checkout@v5.1.0
+      - uses: actions/checkout@v7.0.1
       - name: Set up uv
         continue-on-error: true
-        uses: astral-sh/setup-uv@v6.8.0
+        uses: astral-sh/setup-uv@v10.3.3
       - name: Run Flawfinder
         continue-on-error: true
         shell: bash --noprofile --norc {0}
@@ -852,7 +852,7 @@ jobs:
             echo '::warning::flawfinder produced no valid SARIF; dropping the artifact'
             rm -f flawfinder.sarif
           fi
-      - uses: actions/upload-artifact@v6.0.0
+      - uses: actions/upload-artifact@v7.0.2
         with:
           name: flawfinder
           path: flawfinder.sarif
@@ -865,7 +865,7 @@ jobs:
     runs-on: [self-hosted, Linux, X64, vulnetix-local]
     timeout-minutes: 60
     steps:
-      - uses: actions/checkout@v5.1.0
+      - uses: actions/checkout@v7.0.1
       - name: Export the dependency graph
         continue-on-error: true
         env:
@@ -884,7 +884,7 @@ jobs:
             echo '::warning::GitHub returned no valid SPDX; dropping the artifact'
             rm -f github-sbom.spdx.json
           fi
-      - uses: actions/upload-artifact@v6.0.0
+      - uses: actions/upload-artifact@v7.0.2
         with:
           name: github-sbom
           path: github-sbom.spdx.json
@@ -897,7 +897,7 @@ jobs:
     runs-on: [self-hosted, Linux, X64, vulnetix-local]
     timeout-minutes: 60
     steps:
-      - uses: actions/checkout@v5.1.0
+      - uses: actions/checkout@v7.0.1
       - name: Run Gitleaks
         continue-on-error: true
         shell: bash --noprofile --norc {0}
@@ -910,7 +910,7 @@ jobs:
             echo "::warning::gitleaks produced no valid SARIF; dropping the artifact"
             rm -f gitleaks.sarif
           fi
-      - uses: actions/upload-artifact@v6.0.0
+      - uses: actions/upload-artifact@v7.0.2
         with:
           name: gitleaks
           path: gitleaks.sarif
@@ -923,10 +923,10 @@ jobs:
     runs-on: [self-hosted, Linux, X64, vulnetix-local]
     timeout-minutes: 60
     steps:
-      - uses: actions/checkout@v5.1.0
+      - uses: actions/checkout@v7.0.1
       - name: Set up Go
         continue-on-error: true
-        uses: actions/setup-go@v6.5.0
+        uses: actions/setup-go@v7.0.0
         with:
           go-version: stable
       - name: Run golangci-lint
@@ -950,7 +950,7 @@ jobs:
             echo '::warning::golangci-lint produced no valid SARIF; dropping the artifact'
             rm -f golangci-lint.sarif
           fi
-      - uses: actions/upload-artifact@v6.0.0
+      - uses: actions/upload-artifact@v7.0.2
         with:
           name: golangci-lint
           path: golangci-lint.sarif
@@ -963,10 +963,10 @@ jobs:
     runs-on: [self-hosted, Linux, X64, vulnetix-local]
     timeout-minutes: 60
     steps:
-      - uses: actions/checkout@v5.1.0
+      - uses: actions/checkout@v7.0.1
       - name: Set up Go
         continue-on-error: true
-        uses: actions/setup-go@v6.5.0
+        uses: actions/setup-go@v7.0.0
         with:
           go-version: stable
       - name: Run gosec
@@ -990,7 +990,7 @@ jobs:
             echo '::warning::gosec produced no valid SARIF; dropping the artifact'
             rm -f gosec.sarif
           fi
-      - uses: actions/upload-artifact@v6.0.0
+      - uses: actions/upload-artifact@v7.0.2
         with:
           name: gosec
           path: gosec.sarif
@@ -1003,10 +1003,10 @@ jobs:
     runs-on: [self-hosted, Linux, X64, vulnetix-local]
     timeout-minutes: 60
     steps:
-      - uses: actions/checkout@v5.1.0
+      - uses: actions/checkout@v7.0.1
       - name: Set up Go
         continue-on-error: true
-        uses: actions/setup-go@v6.5.0
+        uses: actions/setup-go@v7.0.0
         with:
           go-version: stable
       - name: Run govulncheck
@@ -1035,7 +1035,7 @@ jobs:
             echo '::warning::govulncheck produced no valid SARIF; dropping the artifact'
             rm -f govulncheck.sarif
           fi
-      - uses: actions/upload-artifact@v6.0.0
+      - uses: actions/upload-artifact@v7.0.2
         with:
           name: govulncheck
           path: govulncheck.sarif
@@ -1048,11 +1048,11 @@ jobs:
     runs-on: [self-hosted, Linux, X64, vulnetix-local]
     timeout-minutes: 60
     steps:
-      - uses: actions/checkout@v5.1.0
+      - uses: actions/checkout@v7.0.1
       - name: Run Grype
         id: grype
         continue-on-error: true
-        uses: anchore/scan-action@v7.4.0
+        uses: anchore/scan-action@v7.4.2
         with:
           fail-build: false
           output-format: sarif
@@ -1062,7 +1062,7 @@ jobs:
         shell: bash --noprofile --norc {0}
         run: |
           cp "${{ steps.grype.outputs.sarif }}" grype.sarif
-      - uses: actions/upload-artifact@v6.0.0
+      - uses: actions/upload-artifact@v7.0.2
         with:
           name: grype
           path: grype.sarif
@@ -1075,7 +1075,7 @@ jobs:
     runs-on: [self-hosted, Linux, X64, vulnetix-local]
     timeout-minutes: 60
     steps:
-      - uses: actions/checkout@v5.1.0
+      - uses: actions/checkout@v7.0.1
       - name: Build the image
         id: build
         continue-on-error: true
@@ -1098,7 +1098,7 @@ jobs:
       - name: Run Grype
         id: grype
         continue-on-error: true
-        uses: anchore/scan-action@v7.4.0
+        uses: anchore/scan-action@v7.4.2
         with:
           fail-build: false
           image: '${{ steps.build.outputs.image }}'
@@ -1114,7 +1114,7 @@ jobs:
             echo '::warning::grype image produced no valid SARIF; dropping the artifact'
             rm -f grype-image.sarif
           fi
-      - uses: actions/upload-artifact@v6.0.0
+      - uses: actions/upload-artifact@v7.0.2
         with:
           name: grype-image
           path: grype-image.sarif
@@ -1126,7 +1126,7 @@ jobs:
     name: Hadolint (Dockerfile)
     runs-on: [self-hosted, Linux, X64, vulnetix-local]
     steps:
-      - uses: actions/checkout@v5.1.0
+      - uses: actions/checkout@v7.0.1
       - name: Run Hadolint
         continue-on-error: true
         shell: bash --noprofile --norc {0}
@@ -1155,7 +1155,7 @@ jobs:
             echo '::warning::hadolint produced no valid SARIF; dropping the artifact'
             rm -f hadolint.sarif
           fi
-      - uses: actions/upload-artifact@v6.0.0
+      - uses: actions/upload-artifact@v7.0.2
         with:
           name: hadolint
           path: hadolint.sarif
@@ -1168,7 +1168,7 @@ jobs:
     runs-on: [self-hosted, Linux, X64, vulnetix-local]
     timeout-minutes: 60
     steps:
-      - uses: actions/checkout@v5.1.0
+      - uses: actions/checkout@v7.0.1
       - name: Run KICS
         continue-on-error: true
         shell: bash --noprofile --norc {0}
@@ -1176,7 +1176,7 @@ jobs:
           mkdir -p kics-out
           docker run --rm -v "$PWD:/path" checkmarx/kics:v2.1.20 \
             scan -p /path -o /path/kics-out --report-formats sarif --no-progress || true
-      - uses: actions/upload-artifact@v6.0.0
+      - uses: actions/upload-artifact@v7.0.2
         with:
           name: kics
           path: kics-out/results.sarif
@@ -1189,10 +1189,10 @@ jobs:
     runs-on: [self-hosted, Linux, X64, vulnetix-local]
     timeout-minutes: 60
     steps:
-      - uses: actions/checkout@v5.1.0
+      - uses: actions/checkout@v7.0.1
       - name: Set up uv
         continue-on-error: true
-        uses: astral-sh/setup-uv@v6.8.0
+        uses: astral-sh/setup-uv@v10.3.3
       - name: Run mobsfscan
         continue-on-error: true
         shell: bash --noprofile --norc {0}
@@ -1212,7 +1212,7 @@ jobs:
             echo '::warning::mobsfscan produced no valid SARIF; dropping the artifact'
             rm -f mobsfscan.sarif
           fi
-      - uses: actions/upload-artifact@v6.0.0
+      - uses: actions/upload-artifact@v7.0.2
         with:
           name: mobsfscan
           path: mobsfscan.sarif
@@ -1225,10 +1225,10 @@ jobs:
     runs-on: [self-hosted, Linux, X64, vulnetix-local]
     timeout-minutes: 60
     steps:
-      - uses: actions/checkout@v5.1.0
+      - uses: actions/checkout@v7.0.1
       - name: Set up uv
         continue-on-error: true
-        uses: astral-sh/setup-uv@v6.8.0
+        uses: astral-sh/setup-uv@v10.3.3
       - name: Run njsscan
         continue-on-error: true
         shell: bash --noprofile --norc {0}
@@ -1250,7 +1250,7 @@ jobs:
             echo '::warning::njsscan produced no valid SARIF; dropping the artifact'
             rm -f njsscan.sarif
           fi
-      - uses: actions/upload-artifact@v6.0.0
+      - uses: actions/upload-artifact@v7.0.2
         with:
           name: njsscan
           path: njsscan.sarif
@@ -1263,7 +1263,7 @@ jobs:
     runs-on: [self-hosted, Linux, X64, vulnetix-local]
     timeout-minutes: 60
     steps:
-      - uses: actions/checkout@v5.1.0
+      - uses: actions/checkout@v7.0.1
       - name: Run Nosey Parker
         continue-on-error: true
         shell: bash --noprofile --norc {0}
@@ -1284,7 +1284,7 @@ jobs:
             echo '::warning::noseyparker produced no valid SARIF; dropping the artifact'
             rm -f noseyparker.sarif
           fi
-      - uses: actions/upload-artifact@v6.0.0
+      - uses: actions/upload-artifact@v7.0.2
         with:
           name: noseyparker
           path: noseyparker.sarif
@@ -1297,10 +1297,10 @@ jobs:
     runs-on: [self-hosted, Linux, X64, vulnetix-local]
     timeout-minutes: 60
     steps:
-      - uses: actions/checkout@v5.1.0
+      - uses: actions/checkout@v7.0.1
       - name: Set up Node.js
         continue-on-error: true
-        uses: actions/setup-node@v4.4.0
+        uses: actions/setup-node@v7.1.0
         with:
           node-version: 'lts/*'
       - name: Run npm audit
@@ -1318,7 +1318,7 @@ jobs:
             echo '::warning::npm audit produced no valid SARIF; dropping the artifact'
             rm -f npm-audit.sarif
           fi
-      - uses: actions/upload-artifact@v6.0.0
+      - uses: actions/upload-artifact@v7.0.2
         with:
           name: npm-audit
           path: npm-audit.sarif
@@ -1331,7 +1331,7 @@ jobs:
     runs-on: [self-hosted, Linux, X64, vulnetix-local]
     timeout-minutes: 60
     steps:
-      - uses: actions/checkout@v5.1.0
+      - uses: actions/checkout@v7.0.1
       - name: Run OpenGrep
         continue-on-error: true
         shell: bash --noprofile --norc {0}
@@ -1352,7 +1352,7 @@ jobs:
             echo '::warning::opengrep produced no valid SARIF; dropping the artifact'
             rm -f opengrep.sarif
           fi
-      - uses: actions/upload-artifact@v6.0.0
+      - uses: actions/upload-artifact@v7.0.2
         with:
           name: opengrep
           path: opengrep.sarif
@@ -1365,16 +1365,16 @@ jobs:
     runs-on: [self-hosted, Linux, X64, vulnetix-local]
     timeout-minutes: 60
     steps:
-      - uses: actions/checkout@v5.1.0
+      - uses: actions/checkout@v7.0.1
       - name: Run OSV-Scanner
         continue-on-error: true
-        uses: google/osv-scanner-action/osv-scanner-action@v2.3.8
+        uses: google/osv-scanner-action/osv-scanner-action@v2.7.0
         with:
           scan-args: |-
             --format=sarif
             --output=osv.sarif
             ./
-      - uses: actions/upload-artifact@v6.0.0
+      - uses: actions/upload-artifact@v7.0.2
         with:
           name: osv-scanner
           path: osv.sarif
@@ -1387,16 +1387,16 @@ jobs:
     runs-on: [self-hosted, Linux, X64, vulnetix-local]
     timeout-minutes: 330
     steps:
-      - uses: actions/checkout@v5.1.0
+      - uses: actions/checkout@v7.0.1
       - name: Set up Java
         continue-on-error: true
-        uses: actions/setup-java@v4.9.1
+        uses: actions/setup-java@v6.1.0
         with:
           distribution: temurin
           java-version: 21
       - name: Restore the NVD database
         continue-on-error: true
-        uses: actions/cache@v4.3.0
+        uses: actions/cache@v6.1.0
         with:
           key: 'dependency-check-nvd-${{ github.run_id }}'
           path: '${{ runner.temp }}/dependency-check-data'
@@ -1430,7 +1430,7 @@ jobs:
             echo '::warning::dependency-check produced no valid SARIF; dropping the artifact'
             rm -f dependency-check.sarif
           fi
-      - uses: actions/upload-artifact@v6.0.0
+      - uses: actions/upload-artifact@v7.0.2
         with:
           name: dependency-check
           path: dependency-check.sarif
@@ -1443,7 +1443,7 @@ jobs:
     runs-on: [self-hosted, Linux, X64, vulnetix-local]
     timeout-minutes: 60
     steps:
-      - uses: actions/checkout@v5.1.0
+      - uses: actions/checkout@v7.0.1
       - name: Run PMD
         continue-on-error: true
         uses: pmd/pmd-github-action@v2.0.0
@@ -1451,7 +1451,7 @@ jobs:
           analyzeModifiedFilesOnly: false
           rulesets: rulesets/java/quickstart.xml
           version: latest
-      - uses: actions/upload-artifact@v6.0.0
+      - uses: actions/upload-artifact@v7.0.2
         with:
           name: pmd
           path: pmd-report.sarif
@@ -1464,7 +1464,7 @@ jobs:
     runs-on: [self-hosted, Linux, X64, vulnetix-local]
     timeout-minutes: 30
     steps:
-      - uses: actions/checkout@v5.1.0
+      - uses: actions/checkout@v7.0.1
       - name: Detect PHP setup capability
         id: php-setup
         shell: bash --noprofile --norc {0}
@@ -1510,7 +1510,7 @@ jobs:
             echo '::warning::psalm produced no valid SARIF; dropping the artifact'
             rm -f psalm.sarif
           fi
-      - uses: actions/upload-artifact@v6.0.0
+      - uses: actions/upload-artifact@v7.0.2
         with:
           name: psalm
           path: psalm.sarif
@@ -1523,7 +1523,7 @@ jobs:
     runs-on: [self-hosted, Linux, X64, vulnetix-local]
     timeout-minutes: 60
     steps:
-      - uses: actions/checkout@v5.1.0
+      - uses: actions/checkout@v7.0.1
       - name: Run Regula
         continue-on-error: true
         shell: bash --noprofile --norc {0}
@@ -1543,7 +1543,7 @@ jobs:
             echo '::warning::regula produced no valid SARIF; dropping the artifact'
             rm -f regula.sarif
           fi
-      - uses: actions/upload-artifact@v6.0.0
+      - uses: actions/upload-artifact@v7.0.2
         with:
           name: regula
           path: regula.sarif
@@ -1556,10 +1556,10 @@ jobs:
     runs-on: [self-hosted, Linux, X64, vulnetix-local]
     timeout-minutes: 60
     steps:
-      - uses: actions/checkout@v5.1.0
+      - uses: actions/checkout@v7.0.1
       - name: Set up Node.js
         continue-on-error: true
-        uses: actions/setup-node@v4.4.0
+        uses: actions/setup-node@v7.1.0
         with:
           node-version: 'lts/*'
       - name: Run Retire.js
@@ -1575,7 +1575,7 @@ jobs:
             echo '::warning::retirejs produced no valid CycloneDX JSON; dropping the artifact'
             rm -f retirejs.cdx.json
           fi
-      - uses: actions/upload-artifact@v6.0.0
+      - uses: actions/upload-artifact@v7.0.2
         with:
           name: retirejs
           path: retirejs.cdx.json
@@ -1588,7 +1588,7 @@ jobs:
     runs-on: [self-hosted, Linux, X64, vulnetix-local]
     timeout-minutes: 60
     steps:
-      - uses: actions/checkout@v5.1.0
+      - uses: actions/checkout@v7.0.1
       - name: Set up Ruby
         continue-on-error: true
         uses: ruby/setup-ruby@v1.336.0
@@ -1703,7 +1703,7 @@ jobs:
             echo '::warning::rubocop produced no valid SARIF; dropping the artifact'
             rm -f rubocop.sarif
           fi
-      - uses: actions/upload-artifact@v6.0.0
+      - uses: actions/upload-artifact@v7.0.2
         with:
           name: rubocop
           path: rubocop.sarif
@@ -1716,10 +1716,10 @@ jobs:
     runs-on: [self-hosted, Linux, X64, vulnetix-local]
     timeout-minutes: 60
     steps:
-      - uses: actions/checkout@v5.1.0
+      - uses: actions/checkout@v7.0.1
       - name: Set up uv
         continue-on-error: true
-        uses: astral-sh/setup-uv@v6.8.0
+        uses: astral-sh/setup-uv@v10.3.3
       - name: Run Ruff security rules
         continue-on-error: true
         shell: bash --noprofile --norc {0}
@@ -1741,7 +1741,7 @@ jobs:
             echo '::warning::ruff produced no valid SARIF; dropping the artifact'
             rm -f ruff.sarif
           fi
-      - uses: actions/upload-artifact@v6.0.0
+      - uses: actions/upload-artifact@v7.0.2
         with:
           name: ruff
           path: ruff.sarif
@@ -1754,10 +1754,10 @@ jobs:
     runs-on: [self-hosted, Linux, X64, vulnetix-local]
     timeout-minutes: 60
     steps:
-      - uses: actions/checkout@v5.1.0
+      - uses: actions/checkout@v7.0.1
       - name: Set up uv
         continue-on-error: true
-        uses: astral-sh/setup-uv@v6.8.0
+        uses: astral-sh/setup-uv@v10.3.3
       - name: Run ScanCode Toolkit
         continue-on-error: true
         shell: bash --noprofile --norc {0}
@@ -1799,7 +1799,7 @@ jobs:
                 scancode.cdx.json > scancode.clean.json \
               && mv scancode.clean.json scancode.cdx.json
           fi
-      - uses: actions/upload-artifact@v6.0.0
+      - uses: actions/upload-artifact@v7.0.2
         with:
           name: scancode
           path: scancode.cdx.json
@@ -1812,10 +1812,10 @@ jobs:
     runs-on: [self-hosted, Linux, X64, vulnetix-local]
     timeout-minutes: 60
     steps:
-      - uses: actions/checkout@v5.1.0
+      - uses: actions/checkout@v7.0.1
       - name: Set up uv
         continue-on-error: true
-        uses: astral-sh/setup-uv@v6.8.0
+        uses: astral-sh/setup-uv@v10.3.3
       - name: Run Semgrep
         continue-on-error: true
         shell: bash --noprofile --norc {0}
@@ -1829,7 +1829,7 @@ jobs:
             exit 0
           fi
           uvx --from semgrep semgrep scan --config auto --sarif --output semgrep.sarif .
-      - uses: actions/upload-artifact@v6.0.0
+      - uses: actions/upload-artifact@v7.0.2
         with:
           name: semgrep
           path: semgrep.sarif
@@ -1842,7 +1842,7 @@ jobs:
     runs-on: [self-hosted, Linux, X64, vulnetix-local]
     timeout-minutes: 60
     steps:
-      - uses: actions/checkout@v5.1.0
+      - uses: actions/checkout@v7.0.1
       - name: Run ShellCheck
         continue-on-error: true
         shell: bash --noprofile --norc {0}
@@ -1952,7 +1952,7 @@ jobs:
             echo '::warning::shellcheck produced no valid SARIF; dropping the artifact'
             rm -f shellcheck.sarif
           fi
-      - uses: actions/upload-artifact@v6.0.0
+      - uses: actions/upload-artifact@v7.0.2
         with:
           name: shellcheck
           path: shellcheck.sarif
@@ -1965,7 +1965,7 @@ jobs:
     runs-on: [self-hosted, Linux, X64, vulnetix-local]
     timeout-minutes: 60
     steps:
-      - uses: actions/checkout@v5.1.0
+      - uses: actions/checkout@v7.0.1
       - name: Run SwiftLint
         continue-on-error: true
         shell: bash --noprofile --norc {0}
@@ -1984,7 +1984,7 @@ jobs:
             echo '::warning::swiftlint produced no valid SARIF; dropping the artifact'
             rm -f swiftlint.sarif
           fi
-      - uses: actions/upload-artifact@v6.0.0
+      - uses: actions/upload-artifact@v7.0.2
         with:
           name: swiftlint
           path: swiftlint.sarif
@@ -1997,16 +1997,16 @@ jobs:
     runs-on: [self-hosted, Linux, X64, vulnetix-local]
     timeout-minutes: 60
     steps:
-      - uses: actions/checkout@v5.1.0
+      - uses: actions/checkout@v7.0.1
       - name: Generate CycloneDX SBOM
         continue-on-error: true
-        uses: anchore/sbom-action@v0.24.0
+        uses: anchore/sbom-action@v0.24.3
         with:
           artifact-name: sbom.cdx.json
           format: cyclonedx-json
           output-file: sbom.cdx.json
           path: .
-      - uses: actions/upload-artifact@v6.0.0
+      - uses: actions/upload-artifact@v7.0.2
         with:
           name: syft
           path: sbom.cdx.json
@@ -2019,7 +2019,7 @@ jobs:
     runs-on: [self-hosted, Linux, X64, vulnetix-local]
     timeout-minutes: 60
     steps:
-      - uses: actions/checkout@v5.1.0
+      - uses: actions/checkout@v7.0.1
       - name: Build the image
         id: build
         continue-on-error: true
@@ -2041,7 +2041,7 @@ jobs:
           echo "image=$image" >> "$GITHUB_OUTPUT"
       - name: Generate image SBOM
         continue-on-error: true
-        uses: anchore/sbom-action@v0.24.0
+        uses: anchore/sbom-action@v0.24.3
         with:
           format: cyclonedx-json
           image: '${{ steps.build.outputs.image }}'
@@ -2055,7 +2055,7 @@ jobs:
             echo '::warning::syft image produced no valid CycloneDX JSON; dropping the artifact'
             rm -f syft-image.cdx.json
           fi
-      - uses: actions/upload-artifact@v6.0.0
+      - uses: actions/upload-artifact@v7.0.2
         with:
           name: syft-image
           path: syft-image.cdx.json
@@ -2068,7 +2068,7 @@ jobs:
     runs-on: [self-hosted, Linux, X64, vulnetix-local]
     timeout-minutes: 60
     steps:
-      - uses: actions/checkout@v5.1.0
+      - uses: actions/checkout@v7.0.1
       - name: Run Terrascan
         continue-on-error: true
         shell: bash --noprofile --norc {0}
@@ -2091,7 +2091,7 @@ jobs:
             echo "::warning::terrascan produced no valid SARIF; dropping the artifact"
             rm -f terrascan.sarif
           fi
-      - uses: actions/upload-artifact@v6.0.0
+      - uses: actions/upload-artifact@v7.0.2
         with:
           name: terrascan
           path: terrascan.sarif
@@ -2104,7 +2104,7 @@ jobs:
     runs-on: [self-hosted, Linux, X64, vulnetix-local]
     timeout-minutes: 60
     steps:
-      - uses: actions/checkout@v5.1.0
+      - uses: actions/checkout@v7.0.1
       - name: Run TFLint
         continue-on-error: true
         shell: bash --noprofile --norc {0}
@@ -2127,7 +2127,7 @@ jobs:
             echo '::warning::tflint produced no valid SARIF; dropping the artifact'
             rm -f tflint.sarif
           fi
-      - uses: actions/upload-artifact@v6.0.0
+      - uses: actions/upload-artifact@v7.0.2
         with:
           name: tflint
           path: tflint.sarif
@@ -2140,13 +2140,13 @@ jobs:
     runs-on: [self-hosted, Linux, X64, vulnetix-local]
     timeout-minutes: 60
     steps:
-      - uses: actions/checkout@v5.1.0
+      - uses: actions/checkout@v7.0.1
       - name: Run tfsec
         continue-on-error: true
         uses: aquasecurity/tfsec-sarif-action@v0.1.4
         with:
           sarif_file: tfsec.sarif
-      - uses: actions/upload-artifact@v6.0.0
+      - uses: actions/upload-artifact@v7.0.2
         with:
           name: tfsec
           path: tfsec.sarif
@@ -2159,7 +2159,7 @@ jobs:
     runs-on: [self-hosted, Linux, X64, vulnetix-local]
     timeout-minutes: 60
     steps:
-      - uses: actions/checkout@v5.1.0
+      - uses: actions/checkout@v7.0.1
       - name: Trivy config
         continue-on-error: true
         uses: aquasecurity/trivy-action@v0.36.0
@@ -2168,7 +2168,7 @@ jobs:
           output: trivy-config.sarif
           scan-ref: .
           scan-type: config
-      - uses: actions/upload-artifact@v6.0.0
+      - uses: actions/upload-artifact@v7.0.2
         with:
           name: trivy-config
           path: trivy-config.sarif
@@ -2181,7 +2181,7 @@ jobs:
     runs-on: [self-hosted, Linux, X64, vulnetix-local]
     timeout-minutes: 60
     steps:
-      - uses: actions/checkout@v5.1.0
+      - uses: actions/checkout@v7.0.1
       - name: Trivy filesystem (CycloneDX)
         continue-on-error: true
         uses: aquasecurity/trivy-action@v0.36.0
@@ -2198,7 +2198,7 @@ jobs:
           output: trivy-fs.sarif
           scan-ref: .
           scan-type: fs
-      - uses: actions/upload-artifact@v6.0.0
+      - uses: actions/upload-artifact@v7.0.2
         with:
           name: trivy-fs
           path: |
@@ -2213,7 +2213,7 @@ jobs:
     runs-on: [self-hosted, Linux, X64, vulnetix-local]
     timeout-minutes: 60
     steps:
-      - uses: actions/checkout@v5.1.0
+      - uses: actions/checkout@v7.0.1
       - name: Build the image
         id: build
         continue-on-error: true
@@ -2250,7 +2250,7 @@ jobs:
             echo '::warning::trivy image produced no valid SARIF; dropping the artifact'
             rm -f trivy-image.sarif
           fi
-      - uses: actions/upload-artifact@v6.0.0
+      - uses: actions/upload-artifact@v7.0.2
         with:
           name: trivy-image
           path: trivy-image.sarif
@@ -2263,7 +2263,7 @@ jobs:
     runs-on: [self-hosted, Linux, X64, vulnetix-local]
     timeout-minutes: 60
     steps:
-      - uses: actions/checkout@v5.1.0
+      - uses: actions/checkout@v7.0.1
       - name: Run TruffleHog
         continue-on-error: true
         shell: bash --noprofile --norc {0}
@@ -2378,7 +2378,7 @@ jobs:
             echo '::warning::trufflehog produced no valid SARIF; dropping the artifact'
             rm -f trufflehog.sarif
           fi
-      - uses: actions/upload-artifact@v6.0.0
+      - uses: actions/upload-artifact@v7.0.2
         with:
           name: trufflehog
           path: trufflehog.sarif
@@ -2391,10 +2391,10 @@ jobs:
     runs-on: [self-hosted, Linux, X64, vulnetix-local]
     timeout-minutes: 60
     steps:
-      - uses: actions/checkout@v5.1.0
+      - uses: actions/checkout@v7.0.1
       - name: Set up Node.js
         continue-on-error: true
-        uses: actions/setup-node@v4.4.0
+        uses: actions/setup-node@v7.1.0
         with:
           node-version: 'lts/*'
       - name: Generate Yarn CycloneDX SBOM
@@ -2412,7 +2412,7 @@ jobs:
             echo '::warning::cyclonedx yarn produced no valid CycloneDX JSON; dropping the artifact'
             rm -f yarn-cyclonedx.cdx.json
           fi
-      - uses: actions/upload-artifact@v6.0.0
+      - uses: actions/upload-artifact@v7.0.2
         with:
           name: yarn-cyclonedx
           path: yarn-cyclonedx.cdx.json
@@ -2425,10 +2425,10 @@ jobs:
     runs-on: [self-hosted, Linux, X64, vulnetix-local]
     timeout-minutes: 60
     steps:
-      - uses: actions/checkout@v5.1.0
+      - uses: actions/checkout@v7.0.1
       - name: Set up uv
         continue-on-error: true
-        uses: astral-sh/setup-uv@v6.8.0
+        uses: astral-sh/setup-uv@v10.3.3
       - name: Run zizmor
         continue-on-error: true
         env:
@@ -2454,7 +2454,7 @@ jobs:
             echo "::warning::zizmor produced no valid SARIF; dropping the artifact"
             rm -f zizmor.sarif
           fi
-      - uses: actions/upload-artifact@v6.0.0
+      - uses: actions/upload-artifact@v7.0.2
         with:
           name: zizmor
           path: zizmor.sarif
@@ -2475,7 +2475,7 @@ jobs:
       VULNETIX_ORG_ID: ${{ secrets.VULNETIX_ORG_ID }}
       VULNETIX_API_KEY: ${{ secrets.VULNETIX_API_KEY }}
     steps:
-      - uses: actions/checkout@v5.1.0
+      - uses: actions/checkout@v7.0.1
       - name: Install Vulnetix CLI
         run: |
           curl -fsSL https://cli.vulnetix.com/install.sh | sh -s -- --install-dir "$HOME/.local/bin"
